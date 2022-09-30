@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "Animals",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Eléphant", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897321513447501, 33.9514314683992 ] } },
+{ "type": "Feature", "properties": { "Name": "Giraphe", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.898077978828276, 33.952131597882044 ] } },
+{ "type": "Feature", "properties": { "Name": "LionAtlas", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.898606567332478, 33.953035292528739 ] } },
+{ "type": "Feature", "properties": { "Name": "Lémur catta", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">", "icon": null }, "geometry": { "type": "Point", "coordinates": [ -6.897991953620861, 33.953272592676448 ] } },
+{ "type": "Feature", "properties": { "Name": "Zébre", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897971888247699, 33.952765866133575 ] } },
+{ "type": "Feature", "properties": { "Name": "Rhinocéros", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897507687029755, 33.953944454265759 ] } },
+{ "type": "Feature", "properties": { "Name": "Watussi", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897147055422114, 33.95255460615352 ] } },
+{ "type": "Feature", "properties": { "Name": "Babouin", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896043436352688, 33.953558594299601 ] } },
+{ "type": "Feature", "properties": { "Name": "Addax", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895924026690253, 33.954836736342429 ] } },
+{ "type": "Feature", "properties": { "Name": "Oryx algazelle", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897175198544271, 33.954214630013517 ] } }
+]
+}
