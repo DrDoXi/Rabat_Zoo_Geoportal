@@ -62,10 +62,10 @@ map.addControl(
 map.on('load', () => {
 
     function addIconPlacement() {
-        var animaux = [ 'Eléphant', 'Rhinocéros','Giraphe','Zébre',"LionAtlas"] ;
+        var animaux = [ 'Crocodile','Panthére','Oryx algazelle','Eléphant', 'Rhinocéros','Giraphe','Zébre',"LionAtlas",'Hippopotame','Hyène rayée','Vautours'] ;
         var arrayLength = animaux.length;
         for (var i = 0; i < arrayLength; i++) {
-            eval("map.loadImage('./assets/img/icons/"+animaux[i]+".png',(error, image) => {if (error) throw error;map.addImage('"+animaux[i]+"', image);map.addLayer({'id':'"+animaux[i]+"','type': 'symbol','source': 'Animals','filter': ['==', 'Name', '"+animaux[i]+"'],'layout': {'visibility': 'visible','icon-image': '"+animaux[i]+"','icon-size': 0.10},minzoom: 10,})})");
+            eval("map.loadImage('./assets/img/icons/"+animaux[i]+".png',(error, image) => {if (error) throw error;map.addImage('"+animaux[i]+"', image);map.addLayer({'id':'"+animaux[i]+"','type': 'symbol','source': 'Animals','filter': ['==', 'Name', '"+animaux[i]+"'],'layout': {'visibility': 'visible','icon-image': '"+animaux[i]+"','icon-size': 0.15},minzoom: 10,})})");
         }
     
     }
