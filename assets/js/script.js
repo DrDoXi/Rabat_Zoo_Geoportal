@@ -8,7 +8,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2b
 
     // Creating a map object
 const map = new mapboxgl.Map({
-    style: 'mapbox://styles/salahelfarissi/ckzzjh6kl000k14mf1l6b88wk',
+    style: 'mapbox://styles/drissdrdoxi/cl8owuj4b001q14ph74dfszi9',
     center: [-6.8932888, 33.954826],
     zoom: 16,
     pitch: 40,
@@ -98,7 +98,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
         'fill-color': '#6d8a5a', // blue color fill
-        'fill-opacity': 0.5   
+        'fill-opacity': 1   
     }});
 
     map.addSource('park', {
@@ -113,7 +113,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
         'fill-color': '#898e91', // blue color fill
-        'fill-opacity': 0.3   
+        'fill-opacity': 0.6  
     }});
 
     map.addSource('Circuits', {
@@ -129,7 +129,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
         'fill-color': '#ebba5a', 
-        'fill-opacity': 0.6   
+        'fill-opacity': 1  
     }});
 
     map.addLayer({
@@ -140,7 +140,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
         'fill-color': '#df413f', 
-        'fill-opacity': 0.6   
+        'fill-opacity': 1   
     }}); 
     
     map.addLayer({
@@ -151,7 +151,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
         'fill-color': '#85339d', 
-        'fill-opacity': 0.6   
+        'fill-opacity': 1   
     }});
 
     map.addSource('Constructions', {
@@ -175,7 +175,7 @@ map.on('load', () => {
         'fill-extrusion-base': 0,
              
             // Make extrusions slightly opaque to see through indoor walls.
-        'fill-extrusion-opacity': 0.8
+        'fill-extrusion-opacity': 1
             
     }});
 
@@ -184,20 +184,20 @@ map.on('load', () => {
         'data': "./data/water.geojson"
     });
 
-    map.addLayer({
-        'id': 'wa',
-        'type': 'fill',
-        'source': 'wa',
-        'layout': {},
-        'paint': {
-        'fill-color': '#13a0fa', // blue color fill
-        'fill-opacity': 0.5  
-    }});
+  //map.addLayer({
+  //    'id': 'wa',
+  //    'type': 'fill',
+  //    'source': 'wa',
+  //    'layout': {},
+  //    'paint': {
+  //    'fill-color': '#13a0fa', // blue color fill
+  //    'fill-opacity': 0.5  
+  //}});
 
-    map.addSource('Zones', {
-        'type': 'geojson',
-        'data': "./data/Zones.geojson"
-    });
+  //map.addSource('Zones', {
+  //    'type': 'geojson',
+  //    'data': "./data/Zones.geojson"
+  //});
 
     map.addLayer({
         'id': 'Zones',
