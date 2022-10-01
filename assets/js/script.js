@@ -82,7 +82,7 @@ map.on('load', () => {
         "paint": {
             "circle-radius": 10,
             "circle-color": "#5b94c6",
-            "circle-opacity": 0.5
+            "circle-opacity": 0
         }   
     });
 
