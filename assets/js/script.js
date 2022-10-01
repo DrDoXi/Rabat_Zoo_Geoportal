@@ -184,15 +184,15 @@ map.on('load', () => {
         'data': "./data/water.geojson"
     });
 
-  //map.addLayer({
-  //    'id': 'wa',
-  //    'type': 'fill',
-  //    'source': 'wa',
-  //    'layout': {},
-  //    'paint': {
-  //    'fill-color': '#13a0fa', // blue color fill
-  //    'fill-opacity': 0.5  
-  //}});
+  map.addLayer({
+      'id': 'wa',
+      'type': 'fill',
+      'source': 'wa',
+      'layout': {},
+      'paint': {
+      'fill-color': '#13a0fa', // blue color fill
+      'fill-opacity': 0.5  
+  }});
 
   //map.addSource('Zones', {
   //    'type': 'geojson',
