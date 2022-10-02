@@ -12,7 +12,7 @@ const map = new mapboxgl.Map({
   container: "map",
   antialias: true,
   attributionControl: false,
-  minZoom: 8
+  minZoom: 10
 });
 
 map.addControl(new mapboxgl.FullscreenControl());
@@ -22,6 +22,10 @@ mapboxgl.setRTLTextPlugin(
   null,
   true // Lazy load the plugin
 );
+
+map.addControl(new mapboxgl.AttributionControl({
+    customAttribution: "By Driss L'hamdochi"
+}));
 
 map.addControl(
   new mapboxgl.GeolocateControl({
