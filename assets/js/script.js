@@ -1,8 +1,3 @@
-const mapExtent = [
-  [-6.889706, 33.954409],
-  [-6.835639, 33.998427],
-];
-
 // Adding mapbox basemap
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ";
@@ -17,7 +12,7 @@ const map = new mapboxgl.Map({
   container: "map",
   antialias: true,
   attributionControl: false,
-  //maxBounds: mapExtent,
+  minZoom: 8
 });
 
 map.addControl(new mapboxgl.FullscreenControl());
@@ -226,18 +221,18 @@ map.on("load", () => {
   //    'data': "./data/Zones.geojson"
   //});
 
-  map.addLayer({
-    id: "Zones",
-    type: "circle",
-    source: "Zones",
-    paint: {
-      "circle-radius": 3,
-      "circle-color": "#223b53",
-      "circle-stroke-color": "white",
-      "circle-stroke-width": 1,
-      "circle-opacity": 0.5,
-    },
-  });
+//  map.addLayer({
+//    id: "Zones",
+//    type: "circle",
+//    source: "Zones",
+//    paint: {
+//      "circle-radius": 3,
+//      "circle-color": "#223b53",
+//      "circle-stroke-color": "white",
+//      "circle-stroke-width": 1,
+//      "circle-opacity": 0.5,
+//    },
+//  });
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
