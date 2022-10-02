@@ -26,7 +26,7 @@
 { "type": "Feature", "properties": { "Name": "Dromadaire", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.893003137323289, 33.953380143303519 ] } },
 { "type": "Feature", "properties": { "Name": "Cygnes noirs", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.892441686838461, 33.954048622043281 ] } },
 { "type": "Feature", "properties": { "Name": "Daim européen", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.891922127517889, 33.954037422649229 ] } },
-{ "type": "Feature", "properties": { "Name": "Chévre", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.891875154690251, 33.953723830851921 ] } },
+{ "type": "Feature", "properties": { "Name": "Chévre", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/Chèvre-nain-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.891875154690251, 33.953723830851921 ] } },
 { "type": "Feature", "properties": { "Name": "Perruche", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.893210170756049, 33.953853300871415 ] } },
 { "type": "Feature", "properties": { "Name": "Mouton soay", "img": "<img src=\"https:\/\/www.rabatzoo.ma\/wp-content\/uploads\/2018\/12\/Mouflons-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893645170224637, 33.953800544963158 ] } },
 { "type": "Feature", "properties": { "Name": "Perroquet", "img": null }, "geometry": { "type": "Point", "coordinates": [ -6.89283858870969, 33.954206035568127 ] } },
