@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display a globe on a webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="assets\css\style.css" />
+  </head>
 
-<head>
-<meta charset="utf-8">
-<title>Display a globe on a webpage</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
-<link rel="stylesheet" href="assets\css\style.css">
+  <body>
+    <div id="map"></div>
 
-</head>
-
-<body>
-
-<div id="map" ></div>
-
-<ul class="wrapper">
-    <button class="icon VillVisi">
-      <span class="tooltip"> Village des visiteurs</span>
-      <span><i class="fab fa-VillVisi"></i></span>
-    </button>
-    <button class="icon FerPeda">
-      <span class="tooltip">Ferme pédagogique</span>
-      <span><i class="fab fa-FerPeda"></i></span>
-    </button>
-    <button class="icon MonAtlas">
-      <span class="tooltip">Montagnes de l'Atlas</span>
-      <span><i class="fab fa-MonAtlas"></i></span>
-    </button>
-    <button class="icon Des">
-      <span class="tooltip">Dèsert</span>
-      <span><i class="fab fa-Des"></i></span>
-    </button>
-    <button class="icon SavAfri">
-      <span class="tooltip">Savane Africaine</span>
-      <span><i class="fab fa-SavAfri"></i></span>
-    </button>
-    <button class="icon Mare">
+    <ul class="wrapper">
+      <button class="icon VillVisi">
+        <span class="tooltip"> Village des visiteurs</span>
+        <span><i class="fab fa-VillVisi"></i></span>
+      </button>
+      <button class="icon FerPeda">
+        <span class="tooltip">Ferme pédagogique</span>
+        <span><i class="fab fa-FerPeda"></i></span>
+      </button>
+      <button class="icon MonAtlas">
+        <span class="tooltip">Montagnes de l'Atlas</span>
+        <span><i class="fab fa-MonAtlas"></i></span>
+      </button>
+      <button class="icon Des">
+        <span class="tooltip">Dèsert</span>
+        <span><i class="fab fa-Des"></i></span>
+      </button>
+      <button class="icon SavAfri">
+        <span class="tooltip">Savane Africaine</span>
+        <span><i class="fab fa-SavAfri"></i></span>
+      </button>
+      <button class="icon Mare">
         <span class="tooltip">Marécages</span>
         <span><i class="fab fa-Mare"></i></span>
-    </button>
-    <button class="icon frotro">
+      </button>
+      <button class="icon frotro">
         <span class="tooltip">Forét Tropical</span>
         <span><i class="fab fa-frotro"></i></span>
-    </button>
-</ul>
+      </button>
+    </ul>
 
-<script src="assets\js\script.js"></script>
-
-</body>
+    <script src="assets\js\script.js"></script>
+  </body>
 </html>
