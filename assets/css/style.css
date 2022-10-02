@@ -1,16 +1,21 @@
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
 .my-custom-control {
-    color: #f00;
-    background: #000;
-    padding: 8px;
-    border-radius: 4px;
-    margin: 8px;
-
-  }
-
-
+  color: #f00;
+  background: #000;
+  padding: 8px;
+  border-radius: 4px;
+  margin: 8px;
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
@@ -100,28 +105,28 @@ body {
 .wrapper .VillVisi:hover,
 .wrapper .VillVisi:hover .tooltip,
 .wrapper .VillVisi:hover .tooltip::before {
-  background: #1877F2;
+  background: #1877f2;
   color: #ffffff;
 }
 
 .wrapper .FerPeda:hover,
 .wrapper .FerPeda:hover .tooltip,
 .wrapper .FerPeda:hover .tooltip::before {
-  background: #1877F2;
+  background: #1877f2;
   color: #ffffff;
 }
 
 .wrapper .MonAtlas:hover,
 .wrapper .MonAtlas:hover .tooltip,
 .wrapper .MonAtlas:hover .tooltip::before {
-  background: #1DA1F2;
+  background: #1da1f2;
   color: #ffffff;
 }
 
 .wrapper .Des:hover,
 .wrapper .Des:hover .tooltip,
 .wrapper .Des:hover .tooltip::before {
-  background: #E4405F;
+  background: #e4405f;
   color: #ffffff;
 }
 
@@ -135,7 +140,7 @@ body {
 .wrapper .Mare:hover,
 .wrapper .Mare:hover .tooltip,
 .wrapper .Mare:hover .tooltip::before {
-  background: #CD201F;
+  background: #cd201f;
   color: #ffffff;
 }
 
