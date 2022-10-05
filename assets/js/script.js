@@ -247,12 +247,16 @@ map.on("load", () => {
   map.on("mouseenter", "Animals", (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
+    const Animal_name= e.features[0].properties.Name;
+    
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img
+    console.log(html_in_popup)
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
     openSheetButton=$("#open-sheet");
     try {
       openSheetButton.addEventListener("click", () => {
@@ -270,6 +274,10 @@ map.on("load", () => {
     // Copy coordinates array.
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
+    const Animal_name= e.features[0].properties.Name;
+    
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img
+    console.log(html_in_popup)
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -278,7 +286,7 @@ map.on("load", () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
     openSheetButton=$("#open-sheet");
     try {
       openSheetButton.addEventListener("click", () => {
