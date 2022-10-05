@@ -34,16 +34,17 @@ body {
 html,
 body {
   display: grid;
-  height: 180%;
+  height: 100%;
   width: 100%;
   font-family: "Poppins", sans-serif;
-  place-items: center;
+  place-items: center start;
   background: linear-gradient(315deg, #ffffff, #d7e1ec);
 }
 
 .wrapper {
   display: inline-flex;
   list-style: none;
+  flex-direction: column;
 }
 
 .wrapper .icon {
