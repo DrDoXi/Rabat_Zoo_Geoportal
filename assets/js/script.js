@@ -252,6 +252,7 @@ map.on("load", () => {
     }
 
     popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    document.getElementsByTagName("main")[0].innerHTML=img
   });
 
   map.on("click", "Animals", (e) => {
