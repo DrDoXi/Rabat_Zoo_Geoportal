@@ -241,6 +241,7 @@ map.on("load", () => {
   const popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false,
+    closeOnMove: true,
   });
 
   map.on("mouseenter", "Animals", (e) => {
@@ -252,6 +253,16 @@ map.on("load", () => {
     }
 
     popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    openSheetButton=$("#open-sheet");
+    try {
+      openSheetButton.addEventListener("click", () => {
+          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
+          setIsSheetShown(true)
+        });
+    }
+    catch(err) {
+      ;
+    }
     document.getElementsByTagName("main")[0].innerHTML=img
   });
 
@@ -268,11 +279,21 @@ map.on("load", () => {
     }
 
     popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    openSheetButton=$("#open-sheet");
+    try {
+      openSheetButton.addEventListener("click", () => {
+          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
+          setIsSheetShown(true)
+        });
+    }
+    catch(err) {
+      ;
+    }
   });
 
-  map.on("mouseleave", "Animals", () => {
-    popup.remove();
-  });
+  // map.on("mouseleave", "Animals", () => {
+  //   popup.remove();
+  // });
 
   addIconPlacement();
 });
