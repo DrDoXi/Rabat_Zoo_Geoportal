@@ -249,7 +249,7 @@ map.on("load", () => {
     const img = e.features[0].properties.img;
     const Animal_name= e.features[0].properties.Name;
     
-    html_in_popup= "<h2>" + Animal_name + "</h2>" + img
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img + '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
     console.log(html_in_popup)
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
