@@ -2,7 +2,7 @@
 
 const $ = document.querySelector.bind(document)
 
-const openSheetButton = $("#open-sheet")
+var openSheetButton = $("#open-sheet")
 const sheet = $("#sheet")
 const sheetContents = sheet.querySelector(".contents")
 const draggableArea = sheet.querySelector(".draggable-area")
@@ -25,10 +25,15 @@ const setIsSheetShown = (value) => {
 }
 
 // Open the sheet when clicking the 'open sheet' button
-openSheetButton.addEventListener("click", () => {
-  setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
-  setIsSheetShown(true)
-})
+try {
+    openSheetButton.addEventListener("click", () => {
+        setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
+        setIsSheetShown(true)
+      });
+  }
+  catch(err) {
+    ;
+  }
 
 // Hide the sheet when clicking the 'close' button
 sheet.querySelector(".close-sheet").addEventListener("click", () => {
