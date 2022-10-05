@@ -250,7 +250,6 @@ map.on("load", () => {
     const Animal_name= e.features[0].properties.Name;
     
     html_in_popup= "<h2>" + Animal_name + "</h2>" + img + '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
-    console.log(html_in_popup)
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -276,8 +275,8 @@ map.on("load", () => {
     const img = e.features[0].properties.img;
     const Animal_name= e.features[0].properties.Name;
     
-    html_in_popup= "<h2>" + Animal_name + "</h2>" + img
-    console.log(html_in_popup)
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img +'<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
+
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
