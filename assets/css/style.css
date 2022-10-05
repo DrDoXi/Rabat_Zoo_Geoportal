@@ -45,6 +45,7 @@ body {
   display: inline-flex;
   list-style: none;
   flex-direction: column;
+  margin-left: 20px;
 }
 
 .wrapper .icon {
