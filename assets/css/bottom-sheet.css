@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000;
-    --foreground: #fff;
+    --background: rgb(255, 252, 252);
+    --foreground: rgb(0, 0, 0);
     --divider: #333;
   }
 }
@@ -139,6 +139,7 @@ body {
   right: 0;
   top: 0;
   border: none;
+  opacity: 0;
 }
 
 #sheet .body {
