@@ -241,23 +241,42 @@ map.on("load", () => {
   const popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false,
+    closeOnMove: true,
   });
 
   map.on("mouseenter", "Animals", (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
+    const Animal_name= e.features[0].properties.Name;
+    
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img + '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
+    openSheetButton=$("#open-sheet");
+    try {
+      openSheetButton.addEventListener("click", () => {
+          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
+          setIsSheetShown(true)
+        });
+    }
+    catch(err) {
+      ;
+    }
+    document.getElementsByTagName("main")[0].innerHTML=img
   });
 
   map.on("click", "Animals", (e) => {
     // Copy coordinates array.
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
+    const Animal_name= e.features[0].properties.Name;
+    
+    html_in_popup= "<h2>" + Animal_name + "</h2>" + img +'<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
+
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -266,12 +285,22 @@ map.on("load", () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    popup.setLngLat(coordinates).setHTML(img).addTo(map);
+    popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
+    openSheetButton=$("#open-sheet");
+    try {
+      openSheetButton.addEventListener("click", () => {
+          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
+          setIsSheetShown(true)
+        });
+    }
+    catch(err) {
+      ;
+    }
   });
 
-  map.on("mouseleave", "Animals", () => {
-    popup.remove();
-  });
+  // map.on("mouseleave", "Animals", () => {
+  //   popup.remove();
+  // });
 
   addIconPlacement();
 });

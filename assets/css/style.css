@@ -9,6 +9,19 @@ body {
   width: 100%;
 }
 
+.mapboxgl-popup-content {
+  border-radius: 20px;
+  border-color: #ede1cc;
+  border: #000;
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
 .my-custom-control {
   color: #f00;
   background: #000;
@@ -34,16 +47,18 @@ body {
 html,
 body {
   display: grid;
-  height: 180%;
+  height: 100%;
   width: 100%;
   font-family: "Poppins", sans-serif;
-  place-items: center;
+  place-items: center start;
   background: linear-gradient(315deg, #ffffff, #d7e1ec);
 }
 
 .wrapper {
   display: inline-flex;
   list-style: none;
+  flex-direction: column;
+  margin-left: 20px;
 }
 
 .wrapper .icon {
