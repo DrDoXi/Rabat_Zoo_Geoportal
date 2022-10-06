@@ -266,7 +266,7 @@ map.on("load", () => {
     catch(err) {
       ;
     }
-    document.getElementsByTagName("main")[0].innerHTML=img
+    document.getElementsByTagName("main")[0].innerHTML= "<iframe src=" +"txxt.html"+"></iframe>"
   });
 
   map.on("click", "Animals", (e) => {
