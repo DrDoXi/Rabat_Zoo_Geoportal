@@ -35,9 +35,6 @@ iframe {
   align-items: center;
 }
 
-.mapboxgl-ctrl-geolocate {
-  margin-top: 50%;
-}
 
 .my-custom-control {
   color: #f00;

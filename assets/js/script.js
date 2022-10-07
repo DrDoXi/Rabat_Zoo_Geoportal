@@ -41,6 +41,8 @@ map.addControl(
   })
 );
 
+map.doubleClickZoom.disable();
+
 //class MyCustomControl {
 //    onAdd(map){
 //      this.map = map;
