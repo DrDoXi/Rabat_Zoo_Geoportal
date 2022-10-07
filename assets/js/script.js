@@ -12,7 +12,7 @@ const map = new mapboxgl.Map({
   container: "map",
   antialias: true,
   attributionControl: false,
-  minZoom: 10
+  minZoom: 10,
 });
 
 map.addControl(new mapboxgl.FullscreenControl());
@@ -23,9 +23,11 @@ mapboxgl.setRTLTextPlugin(
   true // Lazy load the plugin
 );
 
-map.addControl(new mapboxgl.AttributionControl({
-    customAttribution: "By Driss L'hamdochi"
-}));
+map.addControl(
+  new mapboxgl.AttributionControl({
+    customAttribution: "By Driss L'hamdochi",
+  })
+);
 
 map.addControl(
   new mapboxgl.GeolocateControl({
@@ -102,7 +104,7 @@ map.on("load", () => {
     paint: {
       "circle-radius": 10,
       "circle-color": "#5b94c6",
-      "circle-opacity":0.5,
+      "circle-opacity": 0.5,
     },
   });
 
@@ -225,18 +227,18 @@ map.on("load", () => {
   //    'data': "./data/Zones.geojson"
   //});
 
-//  map.addLayer({
-//    id: "Zones",
-//    type: "circle",
-//    source: "Zones",
-//    paint: {
-//      "circle-radius": 3,
-//      "circle-color": "#223b53",
-//      "circle-stroke-color": "white",
-//      "circle-stroke-width": 1,
-//      "circle-opacity": 0.5,
-//    },
-//  });
+  //  map.addLayer({
+  //    id: "Zones",
+  //    type: "circle",
+  //    source: "Zones",
+  //    paint: {
+  //      "circle-radius": 3,
+  //      "circle-color": "#223b53",
+  //      "circle-stroke-color": "white",
+  //      "circle-stroke-width": 1,
+  //      "circle-opacity": 0.5,
+  //    },
+  //  });
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
@@ -247,36 +249,43 @@ map.on("load", () => {
   map.on("mouseenter", "Animals", (e) => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
-    const Animal_name= e.features[0].properties.Name;
-    
-    html_in_popup= "<h2>" + Animal_name + "</h2>" + img + '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
+    const Animal_name = e.features[0].properties.Name;
+
+    html_in_popup =
+      "<h2>" +
+      Animal_name +
+      "</h2>" +
+      img +
+      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>';
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
     popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
-    openSheetButton=$("#open-sheet");
+    openSheetButton = $("#open-sheet");
     try {
       openSheetButton.addEventListener("click", () => {
-          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
-          setIsSheetShown(true)
-        });
-    }
-    catch(err) {
-      ;
-    }
-    document.getElementsByTagName("main")[0].innerHTML= "<iframe src=" +"txxt.html"+"></iframe>"
+        setSheetHeight(Math.min(50, (720 / window.innerHeight) * 100));
+        setIsSheetShown(true);
+      });
+    } catch (err) {}
+    document.getElementsByTagName("main")[0].innerHTML =
+      "<iframe src=" + "txxt.html" + "></iframe>";
   });
 
   map.on("click", "Animals", (e) => {
     // Copy coordinates array.
     const coordinates = e.features[0].geometry.coordinates.slice();
     const img = e.features[0].properties.img;
-    const Animal_name= e.features[0].properties.Name;
-    
-    html_in_popup= "<h2>" + Animal_name + "</h2>" + img +'<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'
+    const Animal_name = e.features[0].properties.Name;
 
+    html_in_popup =
+      "<h2>" +
+      Animal_name +
+      "</h2>" +
+      img +
+      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>';
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -286,16 +295,13 @@ map.on("load", () => {
     }
 
     popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
-    openSheetButton=$("#open-sheet");
+    openSheetButton = $("#open-sheet");
     try {
       openSheetButton.addEventListener("click", () => {
-          setSheetHeight(Math.min(50, 720 / window.innerHeight * 100))
-          setIsSheetShown(true)
-        });
-    }
-    catch(err) {
-      ;
-    }
+        setSheetHeight(Math.min(50, (720 / window.innerHeight) * 100));
+        setIsSheetShown(true);
+      });
+    } catch (err) {}
   });
 
   // map.on("mouseleave", "Animals", () => {
