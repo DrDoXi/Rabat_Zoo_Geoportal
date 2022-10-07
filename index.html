@@ -24,12 +24,66 @@
     <!-- Script that makes the sheet work -->
     <script src="assets\js\bottom-sheet.js" defer></script>
 
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles2.css">
 
 
 
   </head>
 
   <body>
+
+      <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+              <nav class="nav container">
+                  <a href="#" class="nav__logo">Marlon</a>
+  
+                  <div class="nav__menu" id="nav-menu">
+                      <ul class="nav__list">
+                          <li class="nav__item">
+                              <a href="#home" class="nav__link active-link">
+                                  <i class='bx bx-home-alt nav__icon'></i>
+                                  <span class="nav__name">Home</span>
+                              </a>
+                          </li>
+                          
+                          <li class="nav__item">
+                              <a href="#about" class="nav__link">
+                                  <i class='bx bx-shopping-bag nav__icon'></i>
+                                  <span class="nav__name">Tickets</span>
+                              </a>
+                          </li>
+  
+                          <li class="nav__item">
+                              <a href="#skills" class="nav__link">
+                                  <i class='bx bx-map-alt nav__icon'></i>
+                                  <span class="nav__name">Map</span>
+                              </a>
+                          </li>
+  
+                          <li class="nav__item">
+                              <a href="#portfolio" class="nav__link">
+                                  <i class='bx bxs-cat nav__icon'></i>
+                                  <span class="nav__name">Explore</span>
+                              </a>
+                          </li>
+  
+                          <li class="nav__item">
+                              <a href="#contactme" class="nav__link">
+                                  <i class='bx bx-user nav__icon'></i>
+                                  <span class="nav__name">Profile</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+  
+                  <img src="assets/img/perfil.png" alt="" class="nav__img">
+              </nav>
+    </header>
+
     <div id="map"></div>
 
     <ul class="wrapper">
@@ -93,6 +147,7 @@
     </div>
 
     <script src="assets\js\script.js"></script>
+    <script src="assets\js\main.js"></script>
 
 
   </body>
