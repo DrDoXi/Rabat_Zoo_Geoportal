@@ -1,7 +1,7 @@
 // Adding mapbox basemap
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ";
-
+//pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ
 // Creating a map object
 const map = new mapboxgl.Map({
   style: "mapbox://styles/drissdrdoxi/cl8owuj4b001q14ph74dfszi9",
@@ -241,6 +241,17 @@ map.on("load", () => {
   //      "circle-opacity": 0.5,
   //    },
   //  });
+
+  // map.addSource('Zoo_Carte', {
+  //   'type': 'raster',
+  //   'url': 'mapbox://drissdrdoxi.58kjy15a'
+  //   });
+     
+  //   map.addLayer({
+  //   'id': 'Zoo_Carte',
+  //   'source': 'Zoo_Carte',
+  //   'type': 'raster'
+  //   });
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
