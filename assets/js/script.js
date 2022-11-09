@@ -15,7 +15,56 @@ const map = new mapboxgl.Map({
   minZoom: 10,
 });
 
-map.addControl(new mapboxgl.FullscreenControl());
+const start = [-6.894425,33.955313];
+
+// create a function to make a directions request
+async function getRoute(end) {
+  // make a directions request using cycling profile
+  // an arbitrary start will always be the same
+  // only the end or destination will change
+  const query = await fetch(
+    `https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+    { method: 'GET' }
+  );
+  const json = await query.json();
+  const data = json.routes[0];
+  const route = data.geometry.coordinates;
+  const geojson = {
+    type: 'Feature',
+    properties: {},
+    geometry: {
+      type: 'LineString',
+      coordinates: route
+    }
+  };
+  // if the route already exists on the map, we'll reset it using setData
+  if (map.getSource('route')) {
+    map.getSource('route').setData(geojson);
+  }
+  // otherwise, we'll make a new request
+  else {
+    map.addLayer({
+      id: 'route',
+      type: 'line',
+      source: {
+        type: 'geojson',
+        data: geojson
+      },
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#bdab05',
+        'line-width': 8,
+        'line-opacity': 1
+      }
+    });
+  }
+  // add turn instructions here at the end
+}
+
+// map.addControl(new mapboxgl.FullscreenControl());
 // Correcting for arabic text direction for street names
 mapboxgl.setRTLTextPlugin(
   "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js",
@@ -38,7 +87,9 @@ map.addControl(
     trackUserLocation: true,
     // Draw an arrow next to the location dot to indicate which direction the device is heading.
     showUserHeading: true,
-  })
+  }),
+  'top-left'
+
 );
 
 map.doubleClickZoom.disable();
@@ -106,7 +157,7 @@ map.on("load", () => {
     paint: {
       "circle-radius": 10,
       "circle-color": "#5b94c6",
-      "circle-opacity": 0.5,
+      "circle-opacity": 0,
     },
   });
 
@@ -183,6 +234,22 @@ map.on("load", () => {
     },
   });
 
+  map.addSource("wa", {
+    type: "geojson",
+    data: "./data/water.geojson",
+  });
+
+  map.addLayer({
+    id: "wa",
+    type: "fill",
+    source: "wa",
+    layout: {},
+    paint: {
+      "fill-color": "#13a0fa", // blue color fill
+      "fill-opacity": 0.8,
+    },
+  });
+
   map.addSource("Constructions", {
     type: "geojson",
     data: "./data/Constructions.geojson",
@@ -198,31 +265,17 @@ map.on("load", () => {
       "fill-extrusion-color": "#795f47",
 
       // Get `fill-extrusion-height` from the source `height` property.
-      "fill-extrusion-height": 5,
+      "fill-extrusion-height": 4,
 
       // Get `fill-extrusion-base` from the source `base_height` property.
       "fill-extrusion-base": 0,
 
       // Make extrusions slightly opaque to see through indoor walls.
-      "fill-extrusion-opacity": 1,
+      "fill-extrusion-opacity": 0.9,
     },
   });
 
-  map.addSource("wa", {
-    type: "geojson",
-    data: "./data/water.geojson",
-  });
 
-  map.addLayer({
-    id: "wa",
-    type: "fill",
-    source: "wa",
-    layout: {},
-    paint: {
-      "fill-color": "#13a0fa", // blue color fill
-      "fill-opacity": 0.5,
-    },
-  });
 
   //map.addSource('Zones', {
   //    'type': 'geojson',
@@ -269,7 +322,8 @@ map.on("load", () => {
       Animal_name +
       "</h2>" +
       img +
-      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>';
+      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'+
+      '<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -277,6 +331,7 @@ map.on("load", () => {
 
     popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
     openSheetButton = $("#open-sheet");
+    Direction_btn = $("#Direction_btn");
     try {
       openSheetButton.addEventListener("click", () => {
         setSheetHeight(Math.min(50, (720 / window.innerHeight) * 100));
@@ -285,6 +340,56 @@ map.on("load", () => {
     } catch (err) {}
     document.getElementsByTagName("main")[0].innerHTML =
       "<iframe src=" + "txxt.html" + "></iframe>";
+      try {
+        Direction_btn.addEventListener("click", () => {
+
+          const coords = coordinates;
+          const end = {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Point',
+                  coordinates: coords
+                }
+              }
+            ]
+          };
+          if (map.getLayer('end')) {
+            map.getSource('end').setData(end);
+          } else {
+            map.addLayer({
+              id: 'end',
+              type: 'circle',
+              source: {
+                type: 'geojson',
+                data: {
+                  type: 'FeatureCollection',
+                  features: [
+                    {
+                      type: 'Feature',
+                      properties: {},
+                      geometry: {
+                        type: 'Point',
+                        coordinates: coords
+                      }
+                    }
+                  ]
+                }
+              },
+              paint: {
+                'circle-radius': 10,
+                'circle-color': '#f30'
+              }
+            });
+          }
+          getRoute(coords);
+
+        });
+      } catch (err) {}
+
   });
 
   map.on("click", "Animals", (e) => {
@@ -298,23 +403,78 @@ map.on("load", () => {
       Animal_name +
       "</h2>" +
       img +
-      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>';
+      '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>'+
+      '<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
     // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) { 
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
     popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
     openSheetButton = $("#open-sheet");
+    Direction_btn = $("#Direction_btn");
     try {
       openSheetButton.addEventListener("click", () => {
         setSheetHeight(Math.min(50, (720 / window.innerHeight) * 100));
         setIsSheetShown(true);
       });
     } catch (err) {}
+
+    try {
+      Direction_btn.addEventListener("click",() => {
+
+        const coords = coordinates;
+        const end = {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'Point',
+                coordinates: coords
+              }
+            }
+          ]
+        };
+        if (map.getLayer('end')) {
+          map.getSource('end').setData(end);
+        } else {
+          map.addLayer({
+            id: 'end',
+            type: 'circle',
+            source: {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features: [
+                  {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: coords
+                    }
+                  }
+                ]
+              }
+            },
+            paint: {
+              'circle-radius': 10,
+              'circle-color': '#f30'
+            }
+          });
+        }
+        getRoute(coords);
+
+      });
+    } catch (err) {}
+
+
+    
   });
 
   // map.on("mouseleave", "Animals", () => {
@@ -322,6 +482,34 @@ map.on("load", () => {
   // });
 
   addIconPlacement();
+
+  getRoute(start);
+
+  map.addLayer({
+    id: 'point',
+    type: 'circle',
+    source: {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: {},
+            geometry: {
+              type: 'Point',
+              coordinates: start
+            }
+          }
+        ]
+      }
+    },
+    paint: {
+      'circle-radius': 10,
+      'circle-color': '#3887be'
+    }
+  });
+  // this is where the code from the next step will go
 });
 
 document.getElementsByClassName("VillVisi")[0].addEventListener("click", () => {
