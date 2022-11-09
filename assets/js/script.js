@@ -96,7 +96,7 @@ map.addControl(
     // Draw an arrow next to the location dot to indicate which direction the device is heading.
     showUserHeading: true,
   }),
-  'top-left'
+  'top-right'
 
 );
 
@@ -258,30 +258,7 @@ map.on("load", () => {
     },
   });
 
-  map.addSource("Constructions", {
-    type: "geojson",
-    data: "./data/Constructions.geojson",
-  });
 
-  map.addLayer({
-    id: "Constructions",
-    type: "fill-extrusion",
-    source: "Constructions",
-    layout: {},
-    paint: {
-      // Get the `fill-extrusion-color` from the source `color` property.
-      "fill-extrusion-color": "#795f47",
-
-      // Get `fill-extrusion-height` from the source `height` property.
-      "fill-extrusion-height": 4,
-
-      // Get `fill-extrusion-base` from the source `base_height` property.
-      "fill-extrusion-base": 0,
-
-      // Make extrusions slightly opaque to see through indoor walls.
-      "fill-extrusion-opacity": 0.9,
-    },
-  });
 
 
 
@@ -518,6 +495,32 @@ map.on("load", () => {
     }
   });
   // this is where the code from the next step will go
+
+
+  map.addSource("Constructions", {
+    type: "geojson",
+    data: "./data/Constructions.geojson",
+  });
+
+  map.addLayer({
+    id: "Constructions",
+    type: "fill-extrusion",
+    source: "Constructions",
+    layout: {},
+    paint: {
+      // Get the `fill-extrusion-color` from the source `color` property.
+      "fill-extrusion-color": "#795f47",
+
+      // Get `fill-extrusion-height` from the source `height` property.
+      "fill-extrusion-height": 4,
+
+      // Get `fill-extrusion-base` from the source `base_height` property.
+      "fill-extrusion-base": 0,
+
+      // Make extrusions slightly opaque to see through indoor walls.
+      "fill-extrusion-opacity": 0.9,
+    },
+  });
 });
 
 document.getElementsByClassName("VillVisi")[0].addEventListener("click", () => {
