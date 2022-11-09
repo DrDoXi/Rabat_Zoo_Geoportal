@@ -48,16 +48,24 @@ async function getRoute(end) {
       type: 'line',
       source: {
         type: 'geojson',
-        data: geojson
+        data: geojson,
+        "lineMetrics": true
       },
       layout: {
         'line-join': 'round',
         'line-cap': 'round'
       },
       paint: {
-        'line-color': '#bdab05',
-        'line-width': 8,
-        'line-opacity': 1
+        'line-color': 'red',
+        'line-width': 10,
+        'line-opacity': 1,
+        'line-gradient': [
+          'interpolate',
+          ['linear'],
+          ['line-progress'],
+          0,'#007acc',
+          1, '#001e32'
+     ]
       }
     });
   }
