@@ -130,7 +130,7 @@ map.on("load", () => {
       "Rhinocéros",
       "Giraphe",
       "Zébre",
-      "LionAtlas",
+      "Lion de l'atlas",
       "Hippopotame",
       "Hyène rayée",
       "Vautours",
@@ -303,7 +303,7 @@ map.on("load", () => {
     const Animal_name = e.features[0].properties.Name;
 
     html_in_popup =
-      "<h2>" +
+      '<h2 style="font-family: Neucha, sans-serif; font-size: 1rem">' +
       Animal_name +
       "</h2>" +
       img +
@@ -384,7 +384,7 @@ map.on("load", () => {
     const Animal_name = e.features[0].properties.Name;
 
     html_in_popup =
-      "<h2>" +
+      '<h2 style="font-family: Neucha, sans-serif; font-size: 1rem">' +
       Animal_name +
       "</h2>" +
       img +
