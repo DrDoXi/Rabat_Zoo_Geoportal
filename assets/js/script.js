@@ -266,21 +266,21 @@ map.on('load', () => {
 		}
 	});
 
-	map.addSource('grass', {
-		type: 'geojson',
-		data: './data/grass.geojson'
-	});
+	// map.addSource('grass', {
+	// 	type: 'geojson',
+	// 	data: './data/grass.geojson'
+	// });
 
-	map.addLayer({
-		id: 'grass',
-		type: 'fill',
-		source: 'grass',
-		layout: {},
-		paint: {
-			'fill-color': '#6d8a5a', // blue color fill
-			'fill-opacity': 1
-		}
-	});
+	// map.addLayer({
+	// 	id: 'grass',
+	// 	type: 'fill',
+	// 	source: 'grass',
+	// 	layout: {},
+	// 	paint: {
+	// 		'fill-color': '#6d8a5a', // blue color fill
+	// 		'fill-opacity': 1
+	// 	}
+	// });
 
 	// map.addSource('park', {
 	// 	type: 'geojson',
@@ -350,7 +350,7 @@ map.on('load', () => {
 		source: 'wa',
 		layout: {},
 		paint: {
-			'fill-color': '#13a0fa', // blue color fill
+			'fill-color': '#43a2e4', // blue color fill
 			'fill-opacity': 0.8
 		}
 	});
