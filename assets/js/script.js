@@ -282,21 +282,21 @@ map.on('load', () => {
 		}
 	});
 
-	map.addSource('park', {
-		type: 'geojson',
-		data: './data/Park.geojson'
-	});
+	// map.addSource('park', {
+	// 	type: 'geojson',
+	// 	data: './data/Park.geojson'
+	// });
 
-	map.addLayer({
-		id: 'park',
-		type: 'fill',
-		source: 'park',
-		layout: {},
-		paint: {
-			'fill-color': '#898e91', // blue color fill
-			'fill-opacity': 0.6
-		}
-	});
+	// map.addLayer({
+	// 	id: 'park',
+	// 	type: 'fill',
+	// 	source: 'park',
+	// 	layout: {},
+	// 	paint: {
+	// 		'fill-color': '#898e91', // blue color fill
+	// 		'fill-opacity': 0.6
+	// 	}
+	// });
 
 	map.addSource('Circuits', {
 		type: 'geojson',
