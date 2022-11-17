@@ -1,7 +1,6 @@
 // Adding mapbox basemap
-mapboxgl.accessToken =
-	'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
-//pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
+
 // Creating a map object
 const map = new mapboxgl.Map({
 	style: 'mapbox://styles/drissdrdoxi/cl8owuj4b001q14ph74dfszi9',
@@ -15,110 +14,84 @@ const map = new mapboxgl.Map({
 	minZoom: 10
 });
 
-    // parameters to ensure the model is georeferenced correctly on the map
-    const modelOrigin = [ -6.894218, 33.955746];
-    const modelAltitude = 0;
-    const modelRotate = [0, 0, 0];
+// parameters to ensure the model is georeferenced correctly on the map
+const modelOrigin = [ -6.894218, 33.955746 ];
+const modelAltitude = 0;
+const modelRotate = [ 0, 0, 0 ];
 
-    const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
-        modelOrigin,
-        modelAltitude
-    );
+const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(modelOrigin, modelAltitude);
 
-
-    // transformation parameters to position, rotate and scale the 3D model onto the map
-    const modelTransform = {
-        translateX: modelAsMercatorCoordinate.x,
-        translateY: modelAsMercatorCoordinate.y,
-        translateZ: modelAsMercatorCoordinate.z,
-        rotateX: modelRotate[0],
-        rotateY: modelRotate[1],
-        rotateZ: modelRotate[2],
-        /* Since the 3D model is in real world meters, a scale transform needs to be
+// transformation parameters to position, rotate and scale the 3D model onto the map
+const modelTransform = {
+	translateX: modelAsMercatorCoordinate.x,
+	translateY: modelAsMercatorCoordinate.y,
+	translateZ: modelAsMercatorCoordinate.z,
+	rotateX: modelRotate[0],
+	rotateY: modelRotate[1],
+	rotateZ: modelRotate[2],
+	/* Since the 3D model is in real world meters, a scale transform needs to be
          * applied since the CustomLayerInterface expects units in MercatorCoordinates.
          */
-        scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
-    };
+	scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
+};
 
-    modelTransform.scale =0.2017080146240745e-8;
+modelTransform.scale = 0.2017080146240745e-8;
 
-    const THREE = window.THREE;
+const THREE = window.THREE;
 
-    // configuration of the custom layer for a 3D model per the CustomLayerInterface
-    const customLayer = {
-        id: '3d-model',
-        type: 'custom',
-        renderingMode: '3d',
-        onAdd: function (map, gl) {
-            this.camera = new THREE.Camera();
-            this.scene = new THREE.Scene();
+// configuration of the custom layer for a 3D model per the CustomLayerInterface
+const customLayer = {
+	id: '3d-model',
+	type: 'custom',
+	renderingMode: '3d',
+	onAdd: function(map, gl) {
+		this.camera = new THREE.Camera();
+		this.scene = new THREE.Scene();
 
-            // create two three.js lights to illuminate the model
-            const directionalLight = new THREE.DirectionalLight(0x9d8474);
-            directionalLight.position.set(0, -70, 100).normalize();
-            this.scene.add(directionalLight);
+		// create two three.js lights to illuminate the model
+		const directionalLight = new THREE.DirectionalLight(0x9d8474);
+		directionalLight.position.set(0, -70, 100).normalize();
+		this.scene.add(directionalLight);
 
-            const directionalLight2 = new THREE.DirectionalLight(0x9d8474);
-            directionalLight2.position.set(0, 70, 100).normalize();
-            this.scene.add(directionalLight2);
+		const directionalLight2 = new THREE.DirectionalLight(0x9d8474);
+		directionalLight2.position.set(0, 70, 100).normalize();
+		this.scene.add(directionalLight2);
 
-            // use the three.js GLTF loader to add the 3D model to the three.js scene
-            const loader = new THREE.GLTFLoader();
-            loader.load(
-                'assets/3D/lion_zoo.gltf',
-                (gltf) => {
-                    this.scene.add(gltf.scene);
-                }
-            );
-            this.map = map;
+		// use the three.js GLTF loader to add the 3D model to the three.js scene
+		const loader = new THREE.GLTFLoader();
+		loader.load('assets/3D/lion_zoo.gltf', (gltf) => {
+			this.scene.add(gltf.scene);
+		});
+		this.map = map;
 
-            // use the Mapbox GL JS map canvas for three.js
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: map.getCanvas(),
-                context: gl,
-                antialias: true
-            });
+		// use the Mapbox GL JS map canvas for three.js
+		this.renderer = new THREE.WebGLRenderer({
+			canvas: map.getCanvas(),
+			context: gl,
+			antialias: true
+		});
 
-            this.renderer.autoClear = false;
-        },
-        render: function (gl, matrix) {
-            const rotationX = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(1, 0, 0),
-                modelTransform.rotateX
-            );
-            const rotationY = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 1, 0),
-                modelTransform.rotateY
-            );
-            const rotationZ = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 0, 1),
-                modelTransform.rotateZ
-            );
+		this.renderer.autoClear = false;
+	},
+	render: function(gl, matrix) {
+		const rotationX = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), modelTransform.rotateX);
+		const rotationY = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 1, 0), modelTransform.rotateY);
+		const rotationZ = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 0, 1), modelTransform.rotateZ);
 
-            const m = new THREE.Matrix4().fromArray(matrix);
-            const l = new THREE.Matrix4()
-                .makeTranslation(
-                    modelTransform.translateX,
-                    modelTransform.translateY,
-                    modelTransform.translateZ
-                )
-                .scale(
-                    new THREE.Vector3(
-                        modelTransform.scale,
-                        -modelTransform.scale,
-                        modelTransform.scale
-                    )
-                )
-                .multiply(rotationX)
-                .multiply(rotationY)
-                .multiply(rotationZ);
+		const m = new THREE.Matrix4().fromArray(matrix);
+		const l = new THREE.Matrix4()
+			.makeTranslation(modelTransform.translateX, modelTransform.translateY, modelTransform.translateZ)
+			.scale(new THREE.Vector3(modelTransform.scale, -modelTransform.scale, modelTransform.scale))
+			.multiply(rotationX)
+			.multiply(rotationY)
+			.multiply(rotationZ);
 
-            this.camera.projectionMatrix = m.multiply(l);
-            this.renderer.resetState();
-            this.renderer.render(this.scene, this.camera);
-            this.map.triggerRepaint();
-        }
-    };
+		this.camera.projectionMatrix = m.multiply(l);
+		this.renderer.resetState();
+		this.renderer.render(this.scene, this.camera);
+		this.map.triggerRepaint();
+	}
+};
 
 const start = [ -6.894425, 33.955313 ];
 
