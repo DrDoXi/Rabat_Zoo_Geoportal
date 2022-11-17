@@ -157,38 +157,8 @@ map.addControl(
 	})
 );
 
-// map.addControl(
-// 	new mapboxgl.GeolocateControl({
-// 		positionOptions: {
-// 			enableHighAccuracy: true
-// 		},
-// 		// When active the map will receive updates to the device's location as it changes.
-// 		trackUserLocation: true,
-// 		// Draw an arrow next to the location dot to indicate which direction the device is heading.
-// 		showUserHeading: true
-// 	}),
-// 	'top-right'
-// );
 
 map.doubleClickZoom.disable();
-
-//class MyCustomControl {
-//    onAdd(map){
-//      this.map = map;
-//      this.container = document.createElement('div');
-//      this.container.className = 'my-custom-control';
-//      this.container.textContent = 'My custom control';
-//      return this.container;
-//    }
-//    onRemove(){
-//      this.container.parentNode.removeChild(this.container);
-//      this.map = undefined;
-//    }
-//  }
-//
-//const myCustomControl = new MyCustomControl();
-//
-//map.addControl(myCustomControl);
 
 map.on('load', () => {
 	function addIconPlacement() {
@@ -238,38 +208,6 @@ map.on('load', () => {
 			'circle-opacity': 0
 		}
 	});
-
-	// map.addSource('grass', {
-	// 	type: 'geojson',
-	// 	data: './data/grass.geojson'
-	// });
-
-	// map.addLayer({
-	// 	id: 'grass',
-	// 	type: 'fill',
-	// 	source: 'grass',
-	// 	layout: {},
-	// 	paint: {
-	// 		'fill-color': '#6d8a5a', // blue color fill
-	// 		'fill-opacity': 1
-	// 	}
-	// });
-
-	// map.addSource('park', {
-	// 	type: 'geojson',
-	// 	data: './data/Park.geojson'
-	// });
-
-	// map.addLayer({
-	// 	id: 'park',
-	// 	type: 'fill',
-	// 	source: 'park',
-	// 	layout: {},
-	// 	paint: {
-	// 		'fill-color': '#898e91', // blue color fill
-	// 		'fill-opacity': 0.6
-	// 	}
-	// });
 
 	map.addSource('Circuits', {
 		type: 'geojson',
@@ -328,34 +266,6 @@ map.on('load', () => {
 		}
 	});
 
-	//map.addSource('Zones', {
-	//    'type': 'geojson',
-	//    'data': "./data/Zones.geojson"
-	//});
-
-	//  map.addLayer({
-	//    id: "Zones",
-	//    type: "circle",
-	//    source: "Zones",
-	//    paint: {
-	//      "circle-radius": 3,
-	//      "circle-color": "#223b53",
-	//      "circle-stroke-color": "white",
-	//      "circle-stroke-width": 1,
-	//      "circle-opacity": 0.5,
-	//    },
-	//  });
-
-	// map.addSource('Zoo_Carte', {
-	//   'type': 'raster',
-	//   'url': 'mapbox://drissdrdoxi.58kjy15a'
-	//   });
-
-	//   map.addLayer({
-	//   'id': 'Zoo_Carte',
-	//   'source': 'Zoo_Carte',
-	//   'type': 'raster'
-	//   });
 
 	const popup = new mapboxgl.Popup({
 		closeButton: false,
