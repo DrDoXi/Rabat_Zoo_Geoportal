@@ -1,6 +1,6 @@
 // Adding mapbox basemap
 mapboxgl.accessToken =
-	'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
+	'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ';
 //pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ
 // Creating a map object
 const map = new mapboxgl.Map({
