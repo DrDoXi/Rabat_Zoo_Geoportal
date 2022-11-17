@@ -1,6 +1,6 @@
 // Adding mapbox basemap
 mapboxgl.accessToken =
-	'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ';
+	'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
 //pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2w3MjdybnE0MHZpeDQyb3F4NzduemFlMCJ9.kpcyT2Dcf0_1HEjYmK8OiQ
 // Creating a map object
 const map = new mapboxgl.Map({
@@ -184,18 +184,18 @@ map.addControl(
 	})
 );
 
-map.addControl(
-	new mapboxgl.GeolocateControl({
-		positionOptions: {
-			enableHighAccuracy: true
-		},
-		// When active the map will receive updates to the device's location as it changes.
-		trackUserLocation: true,
-		// Draw an arrow next to the location dot to indicate which direction the device is heading.
-		showUserHeading: true
-	}),
-	'top-right'
-);
+// map.addControl(
+// 	new mapboxgl.GeolocateControl({
+// 		positionOptions: {
+// 			enableHighAccuracy: true
+// 		},
+// 		// When active the map will receive updates to the device's location as it changes.
+// 		trackUserLocation: true,
+// 		// Draw an arrow next to the location dot to indicate which direction the device is heading.
+// 		showUserHeading: true
+// 	}),
+// 	'top-right'
+// );
 
 map.doubleClickZoom.disable();
 
