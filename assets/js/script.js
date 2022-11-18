@@ -11,7 +11,8 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	antialias: true,
 	attributionControl: false,
-	minZoom: 10
+	minZoom: 16,
+	maxZoom: 20
 });
 
 // parameters to ensure the model is georeferenced correctly on the map
@@ -315,7 +316,20 @@ map.on('load', () => {
 			'Cygens',
 			'Cygnes noirs',
 			'Paon',
-			'Poney'
+			'Poney',
+			'Fennec',
+			'Ibis chauve',
+			'Canards',
+			'Loutre',
+			'Pélican',
+			'Rapaces',
+			'Buse',
+			'Watussi',
+			'Porc-épic',
+			'Genette',
+			'Vrai Roux',
+			'Serval'
+			
 		];
 		var arrayLength = animaux.length;
 		for (var i = 0; i < arrayLength; i++) {
