@@ -157,6 +157,112 @@ map.addControl(
 	})
 );
 
+const customData = {
+	"type": "FeatureCollection",
+	"name": "Animals",
+	"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+	"features": [
+	{ "type": "Feature", "properties": { "Name": "Eléphant" }, "geometry": { "type": "Point", "coordinates": [ -6.897321513447501, 33.9514314683992 ] } },
+	{ "type": "Feature", "properties": { "Name": "Giraphe" }, "geometry": { "type": "Point", "coordinates": [ -6.898077978828276, 33.952131597882044 ] } },
+	{ "type": "Feature", "properties": { "Name": "Lion de latlas" }, "geometry": { "type": "Point", "coordinates": [ -6.898606567332478, 33.953035292528739 ] } },
+	{ "type": "Feature", "properties": { "Name": "Lémur catta" }, "geometry": { "type": "Point", "coordinates": [ -6.897991953620861, 33.953272592676448 ] } },
+	{ "type": "Feature", "properties": { "Name": "Zébre" }, "geometry": { "type": "Point", "coordinates": [ -6.897971888247699, 33.952765866133575 ] } },
+	{ "type": "Feature", "properties": { "Name": "Rhinocéros" }, "geometry": { "type": "Point", "coordinates": [ -6.897507687029755, 33.953944454265759 ] } },
+	{ "type": "Feature", "properties": { "Name": "Watussi" }, "geometry": { "type": "Point", "coordinates": [ -6.897147055422114, 33.95255460615352 ] } },
+	{ "type": "Feature", "properties": { "Name": "Babouin" }, "geometry": { "type": "Point", "coordinates": [ -6.896043436352688, 33.953558594299601 ] } },
+	{ "type": "Feature", "properties": { "Name": "Addax" }, "geometry": { "type": "Point", "coordinates": [ -6.895924026690253, 33.954836736342429 ] } },
+	{ "type": "Feature", "properties": { "Name": "Oryx algazelle" }, "geometry": { "type": "Point", "coordinates": [ -6.897175198544271, 33.954214630013517 ] } },
+	{ "type": "Feature", "properties": { "Name": "Buffle" }, "geometry": { "type": "Point", "coordinates": [ -6.894992462111438, 33.951739648584152 ] } },
+	{ "type": "Feature", "properties": { "Name": "Autruche à coup rouge" }, "geometry": { "type": "Point", "coordinates": [ -6.896920462811277, 33.953262910202099 ] } },
+	{ "type": "Feature", "properties": { "Name": "Lion Blanc" }, "geometry": { "type": "Point", "coordinates": [ -6.896897352745306, 33.954553885620278 ] } },
+	{ "type": "Feature", "properties": { "Name": "Gazelle thomson" }, "geometry": { "type": "Point", "coordinates": [ -6.896949683459092, 33.952909793044952 ] } },
+	{ "type": "Feature", "properties": { "Name": "Flamant rose" }, "geometry": { "type": "Point", "coordinates": [ -6.894221152882348, 33.953258001835771 ] } },
+	{ "type": "Feature", "properties": { "Name": "Singe magot" }, "geometry": { "type": "Point", "coordinates": [ -6.895334270949593, 33.954872061753925 ] } },
+	{ "type": "Feature", "properties": { "Name": "émeus" }, "geometry": { "type": "Point", "coordinates": [ -6.894080343620834, 33.954566874881252 ] } },
+	{ "type": "Feature", "properties": { "Name": "Poule geante" }, "geometry": { "type": "Point", "coordinates": [ -6.894001409414533, 33.954090740753976 ] } },
+	{ "type": "Feature", "properties": { "Name": "Paon" }, "geometry": { "type": "Point", "coordinates": [ -6.893802182784119, 33.954344053630699 ] } },
+	{ "type": "Feature", "properties": { "Name": "Poney" }, "geometry": { "type": "Point", "coordinates": [ -6.892180842150753, 33.953593685424671 ] } },
+	{ "type": "Feature", "properties": { "Name": "Dromadaire" }, "geometry": { "type": "Point", "coordinates": [ -6.893003137323289, 33.953380143303519 ] } },
+	{ "type": "Feature", "properties": { "Name": "Cygnes noirs" }, "geometry": { "type": "Point", "coordinates": [ -6.892441686838461, 33.954048622043281 ] } },
+	{ "type": "Feature", "properties": { "Name": "Daim européen" }, "geometry": { "type": "Point", "coordinates": [ -6.891922127517889, 33.954037422649229 ] } },
+	{ "type": "Feature", "properties": { "Name": "Chévre" }, "geometry": { "type": "Point", "coordinates": [ -6.891875154690251, 33.953723830851921 ] } },
+	{ "type": "Feature", "properties": { "Name": "Perruche" }, "geometry": { "type": "Point", "coordinates": [ -6.893210170756049, 33.953853300871415 ] } },
+	{ "type": "Feature", "properties": { "Name": "Mouton soay" }, "geometry": { "type": "Point", "coordinates": [ -6.893645170224637, 33.953800544963158 ] } },
+	{ "type": "Feature", "properties": { "Name": "Perroquet" }, "geometry": { "type": "Point", "coordinates": [ -6.89283858870969, 33.954206035568127 ] } },
+	{ "type": "Feature", "properties": { "Name": "Canards" }, "geometry": { "type": "Point", "coordinates": [ -6.892465959279849, 33.953838192767634 ] } },
+	{ "type": "Feature", "properties": { "Name": "Bovin" }, "geometry": { "type": "Point", "coordinates": [ -6.89273288382914, 33.953440459941362 ] } },
+	{ "type": "Feature", "properties": { "Name": "Mouflon à manchette" }, "geometry": { "type": "Point", "coordinates": [ -6.894703286301524, 33.954549165019102 ] } },
+	{ "type": "Feature", "properties": { "Name": "Hippopotame" }, "geometry": { "type": "Point", "coordinates": [ -6.894583725553247, 33.952444024608432 ] } },
+	{ "type": "Feature", "properties": { "Name": "Crocodile" }, "geometry": { "type": "Point", "coordinates": [ -6.894850536549303, 33.952299211653568 ] } },
+	{ "type": "Feature", "properties": { "Name": "Pélican" }, "geometry": { "type": "Point", "coordinates": [ -6.895189490788648, 33.952349452445347 ] } },
+	{ "type": "Feature", "properties": { "Name": "Canards" }, "geometry": { "type": "Point", "coordinates": [ -6.89452753669388, 33.952802305454547 ] } },
+	{ "type": "Feature", "properties": { "Name": "Loutre" }, "geometry": { "type": "Point", "coordinates": [ -6.894290391113994, 33.953006389476329 ] } },
+	{ "type": "Feature", "properties": { "Name": "Cygens" }, "geometry": { "type": "Point", "coordinates": [ -6.894579413324924, 33.953536528137036 ] } },
+	{ "type": "Feature", "properties": { "Name": "Vrai Roux" }, "geometry": { "type": "Point", "coordinates": [ -6.893889308919515, 33.953146080794632 ] } },
+	{ "type": "Feature", "properties": { "Name": "Chimpanzé" }, "geometry": { "type": "Point", "coordinates": [ -6.89416405214386, 33.951994680207243 ] } },
+	{ "type": "Feature", "properties": { "Name": "Cobe lechwé" }, "geometry": { "type": "Point", "coordinates": [ -6.894959829526456, 33.953206747742833 ] } },
+	{ "type": "Feature", "properties": { "Name": "Ibis chauve" }, "geometry": { "type": "Point", "coordinates": [ -6.893199987724175, 33.952423611766108 ] } },
+	{ "type": "Feature", "properties": { "Name": "Cerf" }, "geometry": { "type": "Point", "coordinates": [ -6.893488723723625, 33.953466074619946 ] } },
+	{ "type": "Feature", "properties": { "Name": "Mandrill" }, "geometry": { "type": "Point", "coordinates": [ -6.896355934891602, 33.951601534186196 ] } },
+	{ "type": "Feature", "properties": { "Name": "Panthére" }, "geometry": { "type": "Point", "coordinates": [ -6.89663548312604, 33.951504493580003 ] } },
+	{ "type": "Feature", "properties": { "Name": "Vautours" }, "geometry": { "type": "Point", "coordinates": [ -6.896632355848397, 33.952141361871469 ] } },
+	{ "type": "Feature", "properties": { "Name": "Fennec" }, "geometry": { "type": "Point", "coordinates": [ -6.896195072026975, 33.954183883971773 ] } },
+	{ "type": "Feature", "properties": { "Name": "Porc-épic" }, "geometry": { "type": "Point", "coordinates": [ -6.896033211907156, 33.954224579955728 ] } },
+	{ "type": "Feature", "properties": { "Name": "Hyène rayée" }, "geometry": { "type": "Point", "coordinates": [ -6.896669632192058, 33.952407277708915 ] } },
+	{ "type": "Feature", "properties": { "Name": "Oryx beisa" }, "geometry": { "type": "Point", "coordinates": [ -6.896543036997123, 33.954068098339157 ] } },
+	{ "type": "Feature", "properties": { "Name": "Lycaon" }, "geometry": { "type": "Point", "coordinates": [ -6.895967711859759, 33.953086632798993 ] } },
+	{ "type": "Feature", "properties": { "Name": "Mangouste" }, "geometry": { "type": "Point", "coordinates": [ -6.896288584756079, 33.954357369907115 ] } },
+	{ "type": "Feature", "properties": { "Name": "Cigogne blanche" }, "geometry": { "type": "Point", "coordinates": [ -6.896641275527356, 33.953056106974309 ] } },
+	{ "type": "Feature", "properties": { "Name": "Autruche Africaine" }, "geometry": { "type": "Point", "coordinates": [ -6.897671704906049, 33.952983535304263 ] } },
+	{ "type": "Feature", "properties": { "Name": "Tortue sulcata" }, "geometry": { "type": "Point", "coordinates": [ -6.896253851995985, 33.952858264282 ] } },
+	{ "type": "Feature", "properties": { "Name": "Mangouste rayée" }, "geometry": { "type": "Point", "coordinates": [ -6.896544486980803, 33.95269121859058 ] } },
+	{ "type": "Feature", "properties": { "Name": "Renard" }, "geometry": { "type": "Point", "coordinates": [ -6.895161939038933, 33.954336946118879 ] } },
+	{ "type": "Feature", "properties": { "Name": "Genette" }, "geometry": { "type": "Point", "coordinates": [ -6.894826826519151, 33.954572341769627 ] } },
+	{ "type": "Feature", "properties": { "Name": "Buse" }, "geometry": { "type": "Point", "coordinates": [ -6.896769827357678, 33.952068268092546 ] } },
+	{ "type": "Feature", "properties": { "Name": "Rapaces" }, "geometry": { "type": "Point", "coordinates": [ -6.896946100661076, 33.951948582845873 ] } },
+	{ "type": "Feature", "properties": { "Name": "Ecureuil" }, "geometry": { "type": "Point", "coordinates": [ -6.89642371161221, 33.952746998351842 ] } },
+	{ "type": "Feature", "properties": { "Name": "Gazelle dorcas" }, "geometry": { "type": "Point", "coordinates": [ -6.896806944506035, 33.953913873975253 ] } },
+	{ "type": "Feature", "properties": { "Name": "Serval" }, "geometry": { "type": "Point", "coordinates": [ -6.893228579934036, 33.95290939124753 ] } }
+	]
+	}
+	
+	
+function forwardGeocoder(query) {
+	const matchingFeatures = [];
+	for (const feature of customData.features) {
+	// Handle queries with different capitalization
+	// than the source data by calling toLowerCase().
+	if (
+	feature.properties.Name
+	.toLowerCase()
+	.includes(query.toLowerCase())
+	) {
+	// Add a tree emoji as a prefix for custom
+	// data results using carmen geojson format:
+	// https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+	feature['place_name'] = `🐾 ${feature.properties.Name}`;
+	feature['center'] = feature.geometry.coordinates;
+	feature['place_type'] = ['park'];
+	matchingFeatures.push(feature);
+	}
+	}
+	return matchingFeatures;
+	}
+
+
+// Add the control to the map.
+map.addControl(
+	new MapboxGeocoder({
+	accessToken: mapboxgl.accessToken,
+	localGeocoder: forwardGeocoder,
+	zoom: 18,
+	placeholder: 'Enter search e.g. Giraffe',
+	mapboxgl: mapboxgl,
+	limit:5,
+	marker :false
+	})
+	);
+
 
 map.doubleClickZoom.disable();
 
