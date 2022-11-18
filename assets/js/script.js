@@ -11,7 +11,8 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	antialias: true,
 	attributionControl: false,
-	minZoom: 10
+	minZoom: 16,
+	maxZoom: 20
 });
 
 // parameters to ensure the model is georeferenced correctly on the map
@@ -303,7 +304,32 @@ map.on('load', () => {
 			'Lycaon',
 			'Babouin',
 			'Gazelle thomson',
-			'Cigogne blanche'
+			'Cigogne blanche',
+			'Daim européen',
+			'émeus',
+			'Flamant rose',
+			'Mandrill',
+			'Gazelle dorcas',
+			'Perruche',
+			'Mangouste',
+			'Mangouste rayée',
+			'Cygens',
+			'Cygnes noirs',
+			'Paon',
+			'Poney',
+			'Fennec',
+			'Ibis chauve',
+			'Canards',
+			'Loutre',
+			'Pélican',
+			'Rapaces',
+			'Buse',
+			'Watussi',
+			'Porc-épic',
+			'Genette',
+			'Vrai Roux',
+			'Serval'
+			
 		];
 		var arrayLength = animaux.length;
 		for (var i = 0; i < arrayLength; i++) {
@@ -335,7 +361,7 @@ map.on('load', () => {
 		paint: {
 			'circle-radius': 10,
 			'circle-color': '#5b94c6',
-			'circle-opacity': 0
+			'circle-opacity': 1
 		}
 	});
 
