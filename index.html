@@ -6,32 +6,28 @@
   <title>JZN Connect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet" />
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-  <link rel="stylesheet" href="assets\css\style.css" />
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/img/icons/Favicon.ico">
-
   <!-- Utility classes for CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@ivteplo/utilities.css@1.0.0/build/main.css">
-
   <!-- Custom stylesheet -->
   <link rel="stylesheet" href="assets\css\bottom-sheet.css">
-
   <!-- Script that makes the sheet work -->
   <script src="assets\js\bottom-sheet.js" defer></script>
-
   <!--=============== BOXICONS ===============-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
   <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="assets\css\style.css" />
   <link rel="stylesheet" href="assets/css/styles2.css">
+   <!--=============== mapbox-gl-geocoder ===============-->
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> 
 </head>
 
 <body>
-  <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> 
 
   <!--=============== HEADER ===============-->
   <nav class="nav container">
@@ -132,7 +128,10 @@
       </main>
     </div>
   </div>
-
+  
+  <!-- Script -->
+  <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="assets\js\script.js"></script>
 
 </body>
