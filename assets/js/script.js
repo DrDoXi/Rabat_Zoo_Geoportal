@@ -303,7 +303,19 @@ map.on('load', () => {
 			'Lycaon',
 			'Babouin',
 			'Gazelle thomson',
-			'Cigogne blanche'
+			'Cigogne blanche',
+			'Daim européen',
+			'émeus',
+			'Flamant rose',
+			'Mandrill',
+			'Gazelle dorcas',
+			'Perruche',
+			'Mangouste',
+			'Mangouste rayée',
+			'Cygens',
+			'Cygnes noirs',
+			'Paon',
+			'Poney'
 		];
 		var arrayLength = animaux.length;
 		for (var i = 0; i < arrayLength; i++) {
@@ -335,7 +347,7 @@ map.on('load', () => {
 		paint: {
 			'circle-radius': 10,
 			'circle-color': '#5b94c6',
-			'circle-opacity': 0
+			'circle-opacity': 1
 		}
 	});
 
