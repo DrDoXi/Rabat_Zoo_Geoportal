@@ -22,17 +22,19 @@
   <!--=============== CSS ===============-->
   <link rel="stylesheet" href="assets\css\style.css" />
   <link rel="stylesheet" href="assets/css/styles2.css">
-   <!--=============== mapbox-gl-geocoder ===============-->
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> 
+  <!--=============== mapbox-gl-geocoder ===============-->
+  <script
+    src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
   <style>
-    #loader{
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	background: #ffffff url('./assets/img/loader/sample.gif') no-repeat center;
-	z-index: 999;
-}
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #ffffff url('./assets/img/loader/sample.gif') no-repeat center;
+      z-index: 999;
+    }
   </style>
 
 </head>
@@ -140,7 +142,7 @@
       </main>
     </div>
   </div>
-  
+
   <!-- Script -->
   <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -148,28 +150,28 @@
 
   <script>
 
-var loader;
+    var loader;
 
-function loadNow(opacity) {
-    if (opacity <= 0) {
+    function loadNow(opacity) {
+      if (opacity <= 0) {
         displayContent();
-    } else {
+      } else {
         loader.style.opacity = opacity;
-        window.setTimeout(function() {
-            loadNow(opacity - 0.05);
+        window.setTimeout(function () {
+          loadNow(opacity - 0.05);
         }, 50);
+      }
     }
-}
 
-function displayContent() {
-    loader.style.display = 'none';
-    document.getElementById('map').style.display = 'block';
-}
+    function displayContent() {
+      loader.style.display = 'none';
+      document.getElementById('map').style.display = 'block';
+    }
 
-document.addEventListener("DOMContentLoaded", function() {
-    loader = document.getElementById('loader');
-    loadNow(1);
-});
+    document.addEventListener("DOMContentLoaded", function () {
+      loader = document.getElementById('loader');
+      loadNow(1);
+    });
   </script>
 
 </body>

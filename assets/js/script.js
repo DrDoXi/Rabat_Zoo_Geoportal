@@ -12,7 +12,7 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	antialias: true,
 	attributionControl: false,
-	minZoom: 16,
+	minZoom: 14,
 	maxZoom: 20
 });
 
