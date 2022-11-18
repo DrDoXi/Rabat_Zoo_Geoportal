@@ -25,9 +25,22 @@
    <!--=============== mapbox-gl-geocoder ===============-->
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> 
+  <style>
+    #loader{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: #ffffff url('./assets/img/loader/sample.gif') no-repeat center;
+	z-index: 999;
+}
+  </style>
+
 </head>
 
 <body>
+  <div id="loader"></div>
+  <div id="content">
+
 
   <!--=============== HEADER ===============-->
   <nav class="nav container">
@@ -128,11 +141,38 @@
       </main>
     </div>
   </div>
+</div>
   
   <!-- Script -->
   <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="assets\js\script.js"></script>
+
+  <script>
+
+var loader;
+
+function loadNow(opacity) {
+    if (opacity <= 0) {
+        displayContent();
+    } else {
+        loader.style.opacity = opacity;
+        window.setTimeout(function() {
+            loadNow(opacity - 0.05);
+        }, 50);
+    }
+}
+
+function displayContent() {
+    loader.style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    loader = document.getElementById('loader');
+    loadNow(1);
+});
+  </script>
 
 </body>
 
