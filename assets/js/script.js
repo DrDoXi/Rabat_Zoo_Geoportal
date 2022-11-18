@@ -279,7 +279,31 @@ map.on('load', () => {
 			'Lion de latlas',
 			'Hippopotame',
 			'Hyène rayée',
-			'Vautours'
+			'Vautours',
+			'Dromadaire',
+			'Perroquet',
+			'Bovin',
+			'Mouton soay',
+			'Mouflon à manchette',
+			'Chévre',
+			'Tortue sulcata',
+			'Lion Blanc',
+			'Poule geante',
+			'Ecureuil',
+			'Cerf',
+			'Renard',
+			'Singe magot',
+			'Autruche Africaine',
+			'Autruche à coup rouge',
+			'Oryx beisa',
+			'Buffle',
+			'Chimpanzé',
+			'Cobe lechwé',
+			'Addax',
+			'Lycaon',
+			'Babouin',
+			'Gazelle thomson',
+			'Cigogne blanche'
 		];
 		var arrayLength = animaux.length;
 		for (var i = 0; i < arrayLength; i++) {
