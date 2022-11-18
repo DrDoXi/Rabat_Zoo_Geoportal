@@ -1,6 +1,7 @@
 // Adding mapbox basemap
-mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
-
+// mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
+// pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ
 // Creating a map object
 const map = new mapboxgl.Map({
 	style: 'mapbox://styles/drissdrdoxi/cl8owuj4b001q14ph74dfszi9',
@@ -256,7 +257,7 @@ map.addControl(
 	new MapboxGeocoder({
 	accessToken: mapboxgl.accessToken,
 	localGeocoder: forwardGeocoder,
-	zoom: 18,
+	zoom: 19,
 	placeholder: 'Enter search e.g. Giraffe',
 	mapboxgl: mapboxgl,
 	limit:5,
@@ -328,7 +329,8 @@ map.on('load', () => {
 			'Porc-épic',
 			'Genette',
 			'Vrai Roux',
-			'Serval'
+			'Serval',
+			'Lémur catta'
 			
 		];
 		var arrayLength = animaux.length;
@@ -361,7 +363,7 @@ map.on('load', () => {
 		paint: {
 			'circle-radius': 10,
 			'circle-color': '#5b94c6',
-			'circle-opacity': 1
+			'circle-opacity': 0
 		}
 	});
 
