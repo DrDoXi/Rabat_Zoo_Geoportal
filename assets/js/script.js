@@ -724,3 +724,16 @@ document.getElementsByClassName('nav__item')[4].addEventListener('click', () => 
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
+
+document.getElementsByClassName('nav__item')[3].addEventListener('click', () => {
+	document.getElementsByTagName('main')[0].innerHTML='<iframe src="grid_imgs/index.html" ></iframe>';
+
+
+
+
+
+	
+	setSheetHeight(window.innerHeight);
+	setIsSheetShown(true);
+});
+
