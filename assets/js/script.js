@@ -141,8 +141,10 @@ async function getRoute(end) {
 				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#007acc', 1, '#001e32' ]
 			}
 		});
+		
 	}
 	// add turn instructions here at the end
+	
 }
 
 // map.addControl(new mapboxgl.FullscreenControl());
@@ -481,6 +483,15 @@ map.on('load', () => {
 					});
 				}
 				getRoute(coords);
+				popup.remove();
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ -6.8932888, 33.954826 ],
+					zoom: 16,
+					pitch: 40,
+					bearing: 220,
+					duration: 5000
+				});
 			});
 		} catch (err) {}
 	});
