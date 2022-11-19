@@ -462,39 +462,48 @@ map.on('load', () => {
 		content.innerHTML='';
 
 		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Nom scientifique :'+'</strong>'+'<br>'+ e.features[0].properties.Name
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Classe :'+'</strong>'+'<br>'+e.features[0].properties.Classe
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Famille :'+'</strong>'+'<br>'+e.features[0].properties.Famille
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Longueur :'+'</strong>'+'<br>'+e.features[0].properties.Longueur
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Régime :'+'</strong>'+'<br>'+e.features[0].properties.Régime
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Gestation :'+'</strong>'+'<br>'+e.features[0].properties.Gestation
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Répartition :'+'</strong>'+'<br>'+e.features[0].properties.Répartition
+		new_p.style='text-align: center;';
+        new_p.innerHTML = e.features[0].properties.img
         content.appendChild(new_p);
 
 		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Statut :'+'</strong>'+'<br>'+e.features[0].properties.Statut
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom :'+'</strong>'+'<br>'+ e.features[0].properties.Name
+        content.appendChild(new_p);
+
+		var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom scientifique :'+'</strong>'+'<br>'+ e.features[0].properties.Nom_scientifique
         content.appendChild(new_p);
 
         var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong>'+'Longévité :'+'</strong>'+'<br>'+e.features[0].properties.Longévité
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Classe :'+'</strong>'+'<br>'+e.features[0].properties.Classe
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Famille :'+'</strong>'+'<br>'+e.features[0].properties.Famille
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longueur :'+'</strong>'+'<br>'+e.features[0].properties.Longueur
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Régime :'+'</strong>'+'<br>'+e.features[0].properties.Régime
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Gestation :'+'</strong>'+'<br>'+e.features[0].properties.Gestation
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Répartition :'+'</strong>'+'<br>'+e.features[0].properties.Répartition
+        content.appendChild(new_p);
+
+		var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Statut :'+'</strong>'+'<br>'+e.features[0].properties.Statut
+        content.appendChild(new_p);
+
+        var new_p = document.createElement("p");
+        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longévité :'+'</strong>'+'<br>'+e.features[0].properties.Longévité
         content.appendChild(new_p);
 
 		try {
