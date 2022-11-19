@@ -707,3 +707,20 @@ document.getElementsByClassName('frotro')[0].addEventListener('click', () => {
 map.on('style.load', () => {
 	map.addLayer(customLayer, 'waterway-label');
 });
+
+document.getElementsByClassName('nav__item')[1].addEventListener('click', () => {
+	document.getElementsByTagName('main')[0].innerHTML='<iframe src="https://ticket.rabatzoo.ma/" ></iframe>';
+	setSheetHeight(window.innerHeight);
+	setIsSheetShown(true);
+});
+
+document.getElementsByClassName('nav__item')[2].addEventListener('click', () => {
+	setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+	setIsSheetShown(false);
+});
+
+document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
+	document.getElementsByTagName('main')[0].innerHTML='<iframe src="https://drdoxi.github.io/Resume/" ></iframe>';
+	setSheetHeight(window.innerHeight);
+	setIsSheetShown(true);
+});
