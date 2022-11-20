@@ -636,84 +636,84 @@ map.on('load', () => {
 	});
 });
 
-document.getElementsByClassName('VillVisi')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-		center: [ -6.89442, 33.95529 ],
-		zoom: 17.51,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// document.getElementsByClassName('VillVisi')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// 		center: [ -6.89442, 33.95529 ],
+// 		zoom: 17.51,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('FerPeda')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-		center: [ -6.89352, 33.95424 ],
-		zoom: 18.43,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// document.getElementsByClassName('FerPeda')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// 		center: [ -6.89352, 33.95424 ],
+// 		zoom: 18.43,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('MonAtlas')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-		center: [ -6.89523, 33.95447 ],
-		zoom: 18.25,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// document.getElementsByClassName('MonAtlas')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// 		center: [ -6.89523, 33.95447 ],
+// 		zoom: 18.25,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('Des')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-		center: [ -6.89626, 33.95415 ],
-		zoom: 18.23,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// document.getElementsByClassName('Des')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// 		center: [ -6.89626, 33.95415 ],
+// 		zoom: 18.23,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('SavAfri')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-		center: [ -6.89804, 33.95265 ],
-		zoom: 18.25,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// document.getElementsByClassName('SavAfri')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// 		center: [ -6.89804, 33.95265 ],
+// 		zoom: 18.25,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('Mare')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// document.getElementsByClassName('Mare')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
 
-		center: [ -6.89508, 33.95274 ],
-		zoom: 18.25,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// 		center: [ -6.89508, 33.95274 ],
+// 		zoom: 18.25,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
-document.getElementsByClassName('frotro')[0].addEventListener('click', () => {
-	map.flyTo({
-		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+// document.getElementsByClassName('frotro')[0].addEventListener('click', () => {
+// 	map.flyTo({
+// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
 
-		center: [ -6.89416, 33.95218 ],
-		zoom: 17.54,
-		pitch: 39.01,
-		bearing: -147.5,
-		duration: 5000
-	});
-});
+// 		center: [ -6.89416, 33.95218 ],
+// 		zoom: 17.54,
+// 		pitch: 39.01,
+// 		bearing: -147.5,
+// 		duration: 5000
+// 	});
+// });
 
 map.on('style.load', () => {
 	map.addLayer(customLayer, 'waterway-label');
