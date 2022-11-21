@@ -719,6 +719,12 @@ map.on('style.load', () => {
 	map.addLayer(customLayer, 'waterway-label');
 });
 
+document.getElementsByClassName('nav__item')[0].addEventListener('click', () => {
+	document.getElementsByTagName('main')[0].innerHTML='';
+	setSheetHeight(window.innerHeight);
+	setIsSheetShown(true);
+});
+
 document.getElementsByClassName('nav__item')[1].addEventListener('click', () => {
 	document.getElementsByTagName('main')[0].innerHTML='<iframe src="https://ticket.rabatzoo.ma/" ></iframe>';
 	setSheetHeight(window.innerHeight);
@@ -731,7 +737,7 @@ document.getElementsByClassName('nav__item')[2].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML='<iframe src="https://drdoxi.github.io/Resume/" ></iframe>';
+	document.getElementsByTagName('main')[0].innerHTML='';// 
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
@@ -807,9 +813,64 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 		{ "type": "Feature", "properties": { "Name": "Serval", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Serval.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.893228579934036, 33.95290939124753 ] } }
 		]
 		};
+
+	var Biozones={
+		"type": "FeatureCollection",
+		"name": "Animals",
+		"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+		"features": [
+		{ "type": "Feature", "properties": { "Name": "Village des visiteurs", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894429715544371, 33.95534487700624 ] } },
+		{ "type": "Feature", "properties": { "Name": "Ferme pédagogique", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Ferme_pédagogique.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893680346436516, 33.954126087992279 ] } },
+		{ "type": "Feature", "properties": { "Name": "Montagnes de l'Atlas", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Montagnes_de_latlas.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895346687004776, 33.954683553496444 ] } },
+		{ "type": "Feature", "properties": { "Name": "Savane Africaine", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Savane.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.898204646828526, 33.952718798310848 ] } },
+		{ "type": "Feature", "properties": { "Name": "Marécages", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895689542910474, 33.952486431220557 ] } },
+		{ "type": "Feature", "properties": { "Name": "Forèt Tropicale", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Foret_tropical.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89414864494506, 33.952215009065668 ] } },
+		{ "type": "Feature", "properties": { "Name": "Désert", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Désert.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896253647281535, 33.954104701731211 ] } }
+		]
+		};
+			
 		grid = document.getElementsByClassName('auto-grid')[0];
+
+		title1=document.createElement("h2");
+
+		title1.innerText= 'Biozones'
+		grid.appendChild(title1)
+
+		for (let i = 0; i < Biozones.features.length; i++) {
+			new_li=document.createElement("li");
+			a=document.createElement("a");
+			a.className = "profile";
+			new_h2=document.createElement("h2");
+			new_h2.className = "profile__name";
+			new_h2.innerText= Biozones.features[i].properties.Name;
+			new_p=document.createElement("p");
+			new_p.innerHTML= '<br>';
+			a.appendChild(new_h2);
+			a.appendChild(new_p);
+			new_li.appendChild(a);
+			grid.appendChild(new_li);
+			a.insertAdjacentHTML("beforeEnd",Biozones.features[i].properties.img);
+			new_li.addEventListener("click", function() {
+				setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+				setIsSheetShown(false);
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: Biozones.features[i].geometry.coordinates,
+					zoom: 17.5,
+					pitch: 39.01,
+					bearing: -147.5,
+					duration: 5000
+				});
+				;
+			  });
+		} ;
+
+		title2=document.createElement("h2");
+		title2.innerText= 'Animaux'
+		grid.appendChild(title2);
+
 		for (let i = 0; i < animals.features.length; i++) {
-	
+			
 			new_li=document.createElement("li");
 			a=document.createElement("a");
 			a.className = "profile";

@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "Animals",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Village des visiteurs", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894429715544371, 33.95534487700624 ] } },
+{ "type": "Feature", "properties": { "Name": "Ferme pédagogique", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Ferme_pédagogique.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893680346436516, 33.954126087992279 ] } },
+{ "type": "Feature", "properties": { "Name": "Montagnes de l'Atlas", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Montagnes_de_latlas.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895346687004776, 33.954683553496444 ] } },
+{ "type": "Feature", "properties": { "Name": "Savane Africaine", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Savane.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.898204646828526, 33.952718798310848 ] } },
+{ "type": "Feature", "properties": { "Name": "Marécages", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895689542910474, 33.952486431220557 ] } },
+{ "type": "Feature", "properties": { "Name": "Forèt Tropicale", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Foret_tropical.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89414864494506, 33.952215009065668 ] } },
+{ "type": "Feature", "properties": { "Name": "Désert", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Désert.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896253647281535, 33.954104701731211 ] } }
+]
+}
