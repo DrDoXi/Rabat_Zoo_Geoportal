@@ -293,7 +293,7 @@ map.on('load', () => {
 		type: 'circle',
 		source: 'Animals',
 		paint: {
-			'circle-radius': 10,
+			'circle-radius': 20,
 			'circle-color': '#5b94c6',
 			'circle-opacity': 0
 		}
