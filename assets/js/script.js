@@ -385,7 +385,7 @@ map.on('load', () => {
 		Direction_btn = $('#Direction_btn');
 		try {
 			openSheetButton.addEventListener('click', () => {
-				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setSheetHeight(window.innerHeight);
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
@@ -522,7 +522,7 @@ map.on('load', () => {
 		Direction_btn = $('#Direction_btn');
 		try {
 			openSheetButton.addEventListener('click', () => {
-				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setSheetHeight(window.innerHeight);
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
@@ -732,7 +732,7 @@ document.getElementsByClassName('nav__item')[1].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[2].addEventListener('click', () => {
-	setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+	setSheetHeight(0);
 	setIsSheetShown(false);
 });
 
@@ -851,7 +851,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			grid.appendChild(new_li);
 			a.insertAdjacentHTML("beforeEnd",Biozones.features[i].properties.img);
 			new_li.addEventListener("click", function() {
-				setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+				setSheetHeight(0);
 				setIsSheetShown(false);
 				map.flyTo({
 					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
@@ -885,7 +885,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			grid.appendChild(new_li);
 			a.insertAdjacentHTML("beforeEnd",animals.features[i].properties.img);
 			new_li.addEventListener("click", function() {
-				setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+				setSheetHeight(0);
 				setIsSheetShown(false);
 				map.flyTo({
 					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
