@@ -138,7 +138,7 @@ async function getRoute(end) {
 				'line-color': 'red',
 				'line-width': 10,
 				'line-opacity': 1,
-				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#007acc', 1, '#001e32' ]
+				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#44f2dc', 1, '#144b43' ]
 			}
 		});
 		
