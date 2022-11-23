@@ -27,11 +27,11 @@ iframe {
   z-index: 999999;
 }
 .mapboxgl-popup-content {
-  border-radius: 20px;
-  border-color: #ede1cc;
-  border: #000;
+  border-radius: 10px;
+  /* border-color: #ede1cc; */
+  /* border: #000;
   border-style: solid;
-  border-width: 2px;
+  border-width: 2px; */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -343,4 +343,14 @@ main .profile:hover img,
 main .profile:focus img {
   filter: grayscale(0);
   transform: scale(1.05) rotate(1deg);
+}
+
+.mapboxgl-popup-content{
+  padding: 0;
+}
+
+.mapboxgl-popup-content h2{
+  margin: 0.6rem 0 0.25rem 0;
+  font: "Open Sans", sans-serif;
+  color: #38837b;
 }
