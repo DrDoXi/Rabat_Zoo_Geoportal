@@ -138,7 +138,7 @@ async function getRoute(end) {
 				'line-color': 'red',
 				'line-width': 10,
 				'line-opacity': 1,
-				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#007acc', 1, '#001e32' ]
+				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#44f2dc', 1, '#144b43' ]
 			}
 		});
 		
@@ -369,23 +369,28 @@ map.on('load', () => {
 		const Animal_name = e.features[0].properties.Name;
 
 		html_in_popup =
-			'<h2 style="font-family: Neucha, sans-serif; font-size: 1rem;">' +
+			'<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem;">' +
 			Animal_name +
 			'</h2>' +
 			img +
-			'<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
-			'<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
+			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">'+
+			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class='+"'bx bx-info-circle nav__icon'"+'></i><span class="nav__name">Details</span></a></li>'+
+			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class='+"'bx bx-navigation nav__icon'"+'></i><span class="nav__name">Drirection</span></a></li>'+
+			'</ul></div></nav>';
+
+			// '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
+			// '<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
 
 		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 		}
 
 		popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
-		openSheetButton = $('#open-sheet');
-		Direction_btn = $('#Direction_btn');
+		openSheetButton = $('#open-sheett');
+		Direction_btn = $('#Direction_btnn');
 		try {
 			openSheetButton.addEventListener('click', () => {
-				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setSheetHeight(window.innerHeight);
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
@@ -393,10 +398,6 @@ map.on('load', () => {
 
 		content.innerHTML='';
 
-		var new_p = document.createElement("p");
-		new_p.style='text-align: center;';
-        new_p.innerHTML = e.features[0].properties.img
-        content.appendChild(new_p);
 
 		var new_p = document.createElement("p");
         new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom :'+'</strong>'+'<br>'+ e.features[0].properties.Name
@@ -502,13 +503,14 @@ map.on('load', () => {
 		const img = e.features[0].properties.img;
 		const Animal_name = e.features[0].properties.Name;
 
-		html_in_popup =
-			'<h2 style="font-family: Neucha, sans-serif; font-size: 1rem">' +
-			Animal_name +
-			'</h2>' +
-			img +
-			'<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
-			'<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
+		html_in_popup ='<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem">' +
+		Animal_name +
+		'</h2>' +
+		img +
+		'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">'+
+		'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class='+"'bx bx-info-circle nav__icon'"+'></i><span class="nav__name">Details</span></a></li>'+
+		'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class='+"'bx bx-navigation nav__icon'"+'></i><span class="nav__name">Drirection</span></a></li>'+
+		'</ul></div></nav>';
 
 		// Ensure that if the map is zoomed out such that multiple
 		// copies of the feature are visible, the popup appears
@@ -518,11 +520,11 @@ map.on('load', () => {
 		}
 
 		popup.setLngLat(coordinates).setHTML(html_in_popup).addTo(map);
-		openSheetButton = $('#open-sheet');
-		Direction_btn = $('#Direction_btn');
+		openSheetButton = $('#open-sheett');
+		Direction_btn = $('#Direction_btnn');
 		try {
 			openSheetButton.addEventListener('click', () => {
-				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setSheetHeight(window.innerHeight);
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
@@ -732,7 +734,7 @@ document.getElementsByClassName('nav__item')[1].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[2].addEventListener('click', () => {
-	setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+	setSheetHeight(0);
 	setIsSheetShown(false);
 });
 
@@ -851,7 +853,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			grid.appendChild(new_li);
 			a.insertAdjacentHTML("beforeEnd",Biozones.features[i].properties.img);
 			new_li.addEventListener("click", function() {
-				setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+				setSheetHeight(0);
 				setIsSheetShown(false);
 				map.flyTo({
 					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
@@ -885,7 +887,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			grid.appendChild(new_li);
 			a.insertAdjacentHTML("beforeEnd",animals.features[i].properties.img);
 			new_li.addEventListener("click", function() {
-				setSheetHeight(Math.min(0, 720 / window.innerHeight * 100));
+				setSheetHeight(0);
 				setIsSheetShown(false);
 				map.flyTo({
 					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
