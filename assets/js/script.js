@@ -1,6 +1,7 @@
 // Adding mapbox basemap
 // mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
+mapboxgl.accessToken =
+	'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
 // pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ
 // Creating a map object
 const map = new mapboxgl.Map({
@@ -141,10 +142,8 @@ async function getRoute(end) {
 				'line-gradient': [ 'interpolate', [ 'linear' ], [ 'line-progress' ], 0, '#44f2dc', 1, '#144b43' ]
 			}
 		});
-		
 	}
 	// add turn instructions here at the end
-	
 }
 
 // map.addControl(new mapboxgl.FullscreenControl());
@@ -160,43 +159,37 @@ map.addControl(
 		customAttribution: "By Driss L'hamdochi"
 	})
 );
-	
+
 function forwardGeocoder(query) {
 	const matchingFeatures = [];
 	for (const feature of customData.features) {
-	// Handle queries with different capitalization
-	// than the source data by calling toLowerCase().
-	if (
-	feature.properties.Name
-	.toLowerCase()
-	.includes(query.toLowerCase())
-	) {
-	// Add a tree emoji as a prefix for custom
-	// data results using carmen geojson format:
-	// https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-	feature['place_name'] = `🐾 ${feature.properties.Name}`;
-	feature['center'] = feature.geometry.coordinates;
-	feature['place_type'] = ['park'];
-	matchingFeatures.push(feature);
-	}
+		// Handle queries with different capitalization
+		// than the source data by calling toLowerCase().
+		if (feature.properties.Name.toLowerCase().includes(query.toLowerCase())) {
+			// Add a tree emoji as a prefix for custom
+			// data results using carmen geojson format:
+			// https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+			feature['place_name'] = `🐾 ${feature.properties.Name}`;
+			feature['center'] = feature.geometry.coordinates;
+			feature['place_type'] = [ 'park' ];
+			matchingFeatures.push(feature);
+		}
 	}
 	return matchingFeatures;
-	}
-
+}
 
 // Add the control to the map.
 map.addControl(
 	new MapboxGeocoder({
-	accessToken: mapboxgl.accessToken,
-	localGeocoder: forwardGeocoder,
-	zoom: 19,
-	placeholder: 'Enter search e.g. Giraffe',
-	mapboxgl: mapboxgl,
-	limit:5,
-	marker :false
+		accessToken: mapboxgl.accessToken,
+		localGeocoder: forwardGeocoder,
+		zoom: 19,
+		placeholder: 'Enter search e.g. Giraffe',
+		mapboxgl: mapboxgl,
+		limit: 5,
+		marker: false
 	})
-	);
-
+);
 
 map.doubleClickZoom.disable();
 
@@ -263,7 +256,6 @@ map.on('load', () => {
 			'Vrai Roux',
 			'Serval',
 			'Lémur catta'
-			
 		];
 		var arrayLength = animaux.length;
 		for (var i = 0; i < arrayLength; i++) {
@@ -356,7 +348,6 @@ map.on('load', () => {
 		}
 	});
 
-
 	const popup = new mapboxgl.Popup({
 		closeButton: false,
 		closeOnClick: false,
@@ -373,13 +364,17 @@ map.on('load', () => {
 			Animal_name +
 			'</h2>' +
 			img +
-			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">'+
-			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class='+"'bx bx-info-circle nav__icon'"+'></i><span class="nav__name">Details</span></a></li>'+
-			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class='+"'bx bx-navigation nav__icon'"+'></i><span class="nav__name">Drirection</span></a></li>'+
+			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">' +
+			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class=' +
+			"'bx bx-info-circle nav__icon'" +
+			'></i><span class="nav__name">Details</span></a></li>' +
+			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class=' +
+			"'bx bx-navigation nav__icon'" +
+			'></i><span class="nav__name">Drirection</span></a></li>' +
 			'</ul></div></nav>';
 
-			// '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
-			// '<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
+		// '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
+		// '<button type="button" id="Direction_btn" aria-controls="sheet">Drirection</button>';
 
 		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -394,50 +389,129 @@ map.on('load', () => {
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
-		content=document.getElementsByTagName('main')[0] ;
+		content = document.getElementsByTagName('main')[0];
 
-		content.innerHTML='';
+		content.innerHTML = '';
 
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Nom :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Name;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom :'+'</strong>'+'<br>'+ e.features[0].properties.Name
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Nom scientifique :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Nom_scientifique;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom scientifique :'+'</strong>'+'<br>'+ e.features[0].properties.Nom_scientifique
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Classe :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Classe;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Classe :'+'</strong>'+'<br>'+e.features[0].properties.Classe
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Famille :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Famille;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Famille :'+'</strong>'+'<br>'+e.features[0].properties.Famille
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Longueur :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Longueur;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longueur :'+'</strong>'+'<br>'+e.features[0].properties.Longueur
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Régime :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Régime;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Régime :'+'</strong>'+'<br>'+e.features[0].properties.Régime
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Gestation :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Gestation;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Gestation :'+'</strong>'+'<br>'+e.features[0].properties.Gestation
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Répartition :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Répartition;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Répartition :'+'</strong>'+'<br>'+e.features[0].properties.Répartition
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Statut :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Statut;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Statut :'+'</strong>'+'<br>'+e.features[0].properties.Statut
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longévité :'+'</strong>'+'<br>'+e.features[0].properties.Longévité
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Longévité :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Longévité;
+		content.appendChild(new_p);
 
 		try {
 			Direction_btn.addEventListener('click', () => {
@@ -503,14 +577,19 @@ map.on('load', () => {
 		const img = e.features[0].properties.img;
 		const Animal_name = e.features[0].properties.Name;
 
-		html_in_popup ='<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem">' +
-		Animal_name +
-		'</h2>' +
-		img +
-		'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">'+
-		'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class='+"'bx bx-info-circle nav__icon'"+'></i><span class="nav__name">Details</span></a></li>'+
-		'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class='+"'bx bx-navigation nav__icon'"+'></i><span class="nav__name">Drirection</span></a></li>'+
-		'</ul></div></nav>';
+		html_in_popup =
+			'<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem">' +
+			Animal_name +
+			'</h2>' +
+			img +
+			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">' +
+			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class=' +
+			"'bx bx-info-circle nav__icon'" +
+			'></i><span class="nav__name">Details</span></a></li>' +
+			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class=' +
+			"'bx bx-navigation nav__icon'" +
+			'></i><span class="nav__name">Drirection</span></a></li>' +
+			'</ul></div></nav>';
 
 		// Ensure that if the map is zoomed out such that multiple
 		// copies of the feature are visible, the popup appears
@@ -528,50 +607,129 @@ map.on('load', () => {
 				setIsSheetShown(true);
 			});
 		} catch (err) {}
-		content=document.getElementsByTagName('main')[0] ;
+		content = document.getElementsByTagName('main')[0];
 
-		content.innerHTML='';
+		content.innerHTML = '';
 
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Nom :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Name;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom :'+'</strong>'+'<br>'+ e.features[0].properties.Name
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Nom scientifique :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Nom_scientifique;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Nom scientifique :'+'</strong>'+'<br>'+ e.features[0].properties.Nom_scientifique
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Classe :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Classe;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Classe :'+'</strong>'+'<br>'+e.features[0].properties.Classe
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Famille :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Famille;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Famille :'+'</strong>'+'<br>'+e.features[0].properties.Famille
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Longueur :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Longueur;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longueur :'+'</strong>'+'<br>'+e.features[0].properties.Longueur
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Régime :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Régime;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Régime :'+'</strong>'+'<br>'+e.features[0].properties.Régime
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Gestation :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Gestation;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Gestation :'+'</strong>'+'<br>'+e.features[0].properties.Gestation
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Répartition :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Répartition;
+		content.appendChild(new_p);
 
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Répartition :'+'</strong>'+'<br>'+e.features[0].properties.Répartition
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Statut :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Statut;
+		content.appendChild(new_p);
 
-		var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Statut :'+'</strong>'+'<br>'+e.features[0].properties.Statut
-        content.appendChild(new_p);
-
-        var new_p = document.createElement("p");
-        new_p.innerHTML = '<strong style='+'color:'+'#38837b'+'>'+'Longévité :'+'</strong>'+'<br>'+e.features[0].properties.Longévité
-        content.appendChild(new_p);
+		var new_p = document.createElement('p');
+		new_p.innerHTML =
+			'<strong style=' +
+			'color:' +
+			'#38837b' +
+			'>' +
+			'Longévité :' +
+			'</strong>' +
+			'<br>' +
+			e.features[0].properties.Longévité;
+		content.appendChild(new_p);
 
 		try {
 			Direction_btn.addEventListener('click', () => {
@@ -682,97 +840,18 @@ map.on('load', () => {
 	});
 });
 
-// document.getElementsByClassName('VillVisi')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-// 		center: [ -6.89442, 33.95529 ],
-// 		zoom: 17.51,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('FerPeda')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-// 		center: [ -6.89352, 33.95424 ],
-// 		zoom: 18.43,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('MonAtlas')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-// 		center: [ -6.89523, 33.95447 ],
-// 		zoom: 18.25,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('Des')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-// 		center: [ -6.89626, 33.95415 ],
-// 		zoom: 18.23,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('SavAfri')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-// 		center: [ -6.89804, 33.95265 ],
-// 		zoom: 18.25,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('Mare')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-
-// 		center: [ -6.89508, 33.95274 ],
-// 		zoom: 18.25,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
-// document.getElementsByClassName('frotro')[0].addEventListener('click', () => {
-// 	map.flyTo({
-// 		essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-
-// 		center: [ -6.89416, 33.95218 ],
-// 		zoom: 17.54,
-// 		pitch: 39.01,
-// 		bearing: -147.5,
-// 		duration: 5000
-// 	});
-// });
-
 map.on('style.load', () => {
 	map.addLayer(customLayer, 'waterway-label');
 });
 
 document.getElementsByClassName('nav__item')[0].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML='';
+	document.getElementsByTagName('main')[0].innerHTML = '';
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
 
 document.getElementsByClassName('nav__item')[1].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML='<iframe src="https://ticket.rabatzoo.ma/" ></iframe>';
+	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="https://ticket.rabatzoo.ma/" ></iframe>';
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
@@ -783,170 +862,843 @@ document.getElementsByClassName('nav__item')[2].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML='<iframe src="About.html"  marginwidth="50" ></iframe>';// 
+	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="About.html"  marginwidth="50" ></iframe>'; //
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
 
 document.getElementsByClassName('nav__item')[3].addEventListener('click', () => {
 	// document.getElementsByTagName('main')[0].innerHTML='<iframe src="grid_imgs/index.html" ></iframe>';
-	document.getElementsByTagName('main')[0].innerHTML='<article class="flow"><div class="team"><ul class="auto-grid" role="list"></ul></div></article>';
-	var animals={
-		"type": "FeatureCollection",
-		"name": "Animals",
-		"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-		"features": [
-		{ "type": "Feature", "properties": { "Name": "Eléphant", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Eléphant-d_afrique-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897321513447501, 33.9514314683992 ] } },
-		{ "type": "Feature", "properties": { "Name": "Giraphe", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Girafe.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Giraffa camelopardalis", "Classe": "Mammifères", "Famille": "Giraffidés", "Longueur": "", "Régime": null, "Gestation": null, "Répartition": null }, "geometry": { "type": "Point", "coordinates": [ -6.898077978828276, 33.952131597882044 ] } },
-		{ "type": "Feature", "properties": { "Name": "Lion de latlas", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/DSC_1061-600x600.jpg\" alt=\"Lion de l'Atlas\" width=\"200\" height=\"200\">", "Nom scientifique": "Panthera leo leo" }, "geometry": { "type": "Point", "coordinates": [ -6.898606567332478, 33.953035292528739 ] } },
-		{ "type": "Feature", "properties": { "Name": "Lémur catta", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Lémur_catta.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Lemur catta" }, "geometry": { "type": "Point", "coordinates": [ -6.897991953620861, 33.953272592676448 ] } },
-		{ "type": "Feature", "properties": { "Name": "Zébre", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Zèbre-de-grant-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Equus quagga bohemi" }, "geometry": { "type": "Point", "coordinates": [ -6.897971888247699, 33.952765866133575 ] } },
-		{ "type": "Feature", "properties": { "Name": "Rhinocéros", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Rhinocéros-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Ceratotherium simum" }, "geometry": { "type": "Point", "coordinates": [ -6.897507687029755, 33.953944454265759 ] } },
-		{ "type": "Feature", "properties": { "Name": "Watussi", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Watussi.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897147055422114, 33.95255460615352 ] } },
-		{ "type": "Feature", "properties": { "Name": "Babouin", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Babouin.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Papio anubis" }, "geometry": { "type": "Point", "coordinates": [ -6.896043436352688, 33.953558594299601 ] } },
-		{ "type": "Feature", "properties": { "Name": "Addax", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Addax-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Addax nasomaculatus", "Classe": null }, "geometry": { "type": "Point", "coordinates": [ -6.895924026690253, 33.954836736342429 ] } },
-		{ "type": "Feature", "properties": { "Name": "Oryx algazelle", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Oryx_algazelle.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.897175198544271, 33.954214630013517 ] } },
-		{ "type": "Feature", "properties": { "Name": "Buffle", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Buffle.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894992462111438, 33.951739648584152 ] } },
-		{ "type": "Feature", "properties": { "Name": "Autruche à coup rouge", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Autruche%20Africaine.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Struthio camelus" }, "geometry": { "type": "Point", "coordinates": [ -6.896920462811277, 33.953262910202099 ] } },
-		{ "type": "Feature", "properties": { "Name": "Lion Blanc", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Lion_Blanc.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896897352745306, 33.954553885620278 ] } },
-		{ "type": "Feature", "properties": { "Name": "Gazelle thomson", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/gazelle-m-600x600.png\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Gazelle dama", "Longueur": null, "Gestation": null }, "geometry": { "type": "Point", "coordinates": [ -6.896949683459092, 33.952909793044952 ] } },
-		{ "type": "Feature", "properties": { "Name": "Flamant rose", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Flamant-Rose-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Phoenicopterus roseus" }, "geometry": { "type": "Point", "coordinates": [ -6.894221152882348, 33.953258001835771 ] } },
-		{ "type": "Feature", "properties": { "Name": "Singe magot", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Singe-Magot-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null }, "geometry": { "type": "Point", "coordinates": [ -6.895334270949593, 33.954872061753925 ] } },
-		{ "type": "Feature", "properties": { "Name": "émeus", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/émeus.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894080343620834, 33.954566874881252 ] } },
-		{ "type": "Feature", "properties": { "Name": "Poule geante", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Poule_geante.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894001409414533, 33.954090740753976 ] } },
-		{ "type": "Feature", "properties": { "Name": "Paon", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Paon.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893802182784119, 33.954344053630699 ] } },
-		{ "type": "Feature", "properties": { "Name": "Poney", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Poney-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.892180842150753, 33.953593685424671 ] } },
-		{ "type": "Feature", "properties": { "Name": "Dromadaire", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/dromadaire.png\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893003137323289, 33.953380143303519 ] } },
-		{ "type": "Feature", "properties": { "Name": "Cygnes noirs", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Cygnes_noirs.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.892441686838461, 33.954048622043281 ] } },
-		{ "type": "Feature", "properties": { "Name": "Daim européen", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Daim.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.891922127517889, 33.954037422649229 ] } },
-		{ "type": "Feature", "properties": { "Name": "Chévre", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Chèvre-nain-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Capra hircus" }, "geometry": { "type": "Point", "coordinates": [ -6.891875154690251, 33.953723830851921 ] } },
-		{ "type": "Feature", "properties": { "Name": "Perruche", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Perruche.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893210170756049, 33.953853300871415 ] } },
-		{ "type": "Feature", "properties": { "Name": "Mouton soay", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Mouton_soay.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893645170224637, 33.953800544963158 ] } },
-		{ "type": "Feature", "properties": { "Name": "Perroquet", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Perroquet.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Psittacus erithacus" }, "geometry": { "type": "Point", "coordinates": [ -6.89283858870969, 33.954206035568127 ] } },
-		{ "type": "Feature", "properties": { "Name": "Canards", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Canards.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.892465959279849, 33.953838192767634 ] } },
-		{ "type": "Feature", "properties": { "Name": "Bovin", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Bovin.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89273288382914, 33.953440459941362 ] } },
-		{ "type": "Feature", "properties": { "Name": "Mouflon à manchette", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Mouflons-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Ammotragus lervia" }, "geometry": { "type": "Point", "coordinates": [ -6.894703286301524, 33.954549165019102 ] } },
-		{ "type": "Feature", "properties": { "Name": "Hippopotame", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Hippopotame-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Hippopotamus amphibius" }, "geometry": { "type": "Point", "coordinates": [ -6.894583725553247, 33.952444024608432 ] } },
-		{ "type": "Feature", "properties": { "Name": "Crocodile", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Crocodile-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Crocodylus niloticus" }, "geometry": { "type": "Point", "coordinates": [ -6.894850536549303, 33.952299211653568 ] } },
-		{ "type": "Feature", "properties": { "Name": "Pélican", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Pélican.jpeg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895189490788648, 33.952349452445347 ] } },
-		{ "type": "Feature", "properties": { "Name": "Canards", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Canards.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89452753669388, 33.952802305454547 ] } },
-		{ "type": "Feature", "properties": { "Name": "Loutre", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Loutre.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894290391113994, 33.953006389476329 ] } },
-		{ "type": "Feature", "properties": { "Name": "Cygens", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Cygens.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894579413324924, 33.953536528137036 ] } },
-		{ "type": "Feature", "properties": { "Name": "Vrai Roux", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Vrai_Roux.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893889308919515, 33.953146080794632 ] } },
-		{ "type": "Feature", "properties": { "Name": "Chimpanzé", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Chimpanzé-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Pan troglodytes" }, "geometry": { "type": "Point", "coordinates": [ -6.89416405214386, 33.951994680207243 ] } },
-		{ "type": "Feature", "properties": { "Name": "Cobe lechwé", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Cobe-lechwe-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894959829526456, 33.953206747742833 ] } },
-		{ "type": "Feature", "properties": { "Name": "Ibis chauve", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Ibis-Chauve-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Geronticus eremita" }, "geometry": { "type": "Point", "coordinates": [ -6.893199987724175, 33.952423611766108 ] } },
-		{ "type": "Feature", "properties": { "Name": "Cerf", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Cerf.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893488723723625, 33.953466074619946 ] } },
-		{ "type": "Feature", "properties": { "Name": "Mandrill", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Mandrill.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Mandrillus sphinx" }, "geometry": { "type": "Point", "coordinates": [ -6.896355934891602, 33.951601534186196 ] } },
-		{ "type": "Feature", "properties": { "Name": "Panthére", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Panthére.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89663548312604, 33.951504493580003 ] } },
-		{ "type": "Feature", "properties": { "Name": "Vautours", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Vautour-fauve-1-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Gyps fulvus" }, "geometry": { "type": "Point", "coordinates": [ -6.896632355848397, 33.952141361871469 ] } },
-		{ "type": "Feature", "properties": { "Name": "Fennec", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/fenenc-e1545643887672-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Vulpes zerda", "Classe": "Mammifères", "Famille": "Canidés", "Répartition": null, "Statut": "Rare – Protégé" }, "geometry": { "type": "Point", "coordinates": [ -6.896195072026975, 33.954183883971773 ] } },
-		{ "type": "Feature", "properties": { "Name": "Porc-épic", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Porc-épic.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896033211907156, 33.954224579955728 ] } },
-		{ "type": "Feature", "properties": { "Name": "Hyène rayée", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Hyène_rayée.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896669632192058, 33.952407277708915 ] } },
-		{ "type": "Feature", "properties": { "Name": "Oryx beisa", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Oryx-beisa-2-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Oryx beisa" }, "geometry": { "type": "Point", "coordinates": [ -6.896543036997123, 33.954068098339157 ] } },
-		{ "type": "Feature", "properties": { "Name": "Lycaon", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Lycaon-2-600x600.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": "Lycaon pictus" }, "geometry": { "type": "Point", "coordinates": [ -6.895967711859759, 33.953086632798993 ] } },
-		{ "type": "Feature", "properties": { "Name": "Mangouste", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Mangouste.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896288584756079, 33.954357369907115 ] } },
-		{ "type": "Feature", "properties": { "Name": "Cigogne blanche", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Cigogne_blanche.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896641275527356, 33.953056106974309 ] } },
-		{ "type": "Feature", "properties": { "Name": "Autruche Africaine", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Autruche%20Africaine.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.897671704906049, 33.952983535304263 ] } },
-		{ "type": "Feature", "properties": { "Name": "Tortue sulcata", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Tortue_sulcata.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896253851995985, 33.952858264282 ] } },
-		{ "type": "Feature", "properties": { "Name": "Mangouste rayée", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Mangouste_rayée.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896544486980803, 33.95269121859058 ] } },
-		{ "type": "Feature", "properties": { "Name": "Renard", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Renard.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.895161939038933, 33.954336946118879 ] } },
-		{ "type": "Feature", "properties": { "Name": "Genette", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Genette.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.894826826519151, 33.954572341769627 ] } },
-		{ "type": "Feature", "properties": { "Name": "Buse", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Buse.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896769827357678, 33.952068268092546 ] } },
-		{ "type": "Feature", "properties": { "Name": "Rapaces", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Rapaces.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896946100661076, 33.951948582845873 ] } },
-		{ "type": "Feature", "properties": { "Name": "Ecureuil", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Ecureuil.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.89642371161221, 33.952746998351842 ] } },
-		{ "type": "Feature", "properties": { "Name": "Gazelle dorcas", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Gazelle_dorcas.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.896806944506035, 33.953913873975253 ] } },
-		{ "type": "Feature", "properties": { "Name": "Serval", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Serval.jpg\" alt=\"\" width=\"200\" height=\"200\">", "Nom scientifique": null, "Classe": null, "Famille": null, "Longueur": null, "Régime": null, "Gestation": null, "Répartition": null, "Statut": null }, "geometry": { "type": "Point", "coordinates": [ -6.893228579934036, 33.95290939124753 ] } }
+	document.getElementsByTagName('main')[0].innerHTML =
+		'<article class="flow"><div class="team"><ul class="auto-grid" role="list"></ul></div></article>';
+	var animals = {
+		type: 'FeatureCollection',
+		name: 'Animals',
+		crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
+		features: [
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Eléphant',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Eléphant-d_afrique-1-600x600.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897321513447501, 33.9514314683992 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Giraphe',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Girafe.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Giraffa camelopardalis',
+					Classe: 'Mammifères',
+					Famille: 'Giraffidés',
+					Longueur: '',
+					Régime: null,
+					Gestation: null,
+					Répartition: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.898077978828276, 33.952131597882044 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Lion de latlas',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/DSC_1061-600x600.jpg" alt="Lion de l\'Atlas" width="200" height="200">',
+					'Nom scientifique': 'Panthera leo leo'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.898606567332478, 33.953035292528739 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Lémur catta',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Lémur_catta.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Lemur catta'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897991953620861, 33.953272592676448 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Zébre',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Zèbre-de-grant-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Equus quagga bohemi'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897971888247699, 33.952765866133575 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Rhinocéros',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Rhinocéros-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Ceratotherium simum'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897507687029755, 33.953944454265759 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Watussi',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Watussi.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897147055422114, 33.95255460615352 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Babouin',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Babouin.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Papio anubis'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896043436352688, 33.953558594299601 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Addax',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Addax-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Addax nasomaculatus',
+					Classe: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895924026690253, 33.954836736342429 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Oryx algazelle',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Oryx_algazelle.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897175198544271, 33.954214630013517 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Buffle',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Buffle.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894992462111438, 33.951739648584152 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Autruche à coup rouge',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Autruche%20Africaine.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Struthio camelus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896920462811277, 33.953262910202099 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Lion Blanc',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Lion_Blanc.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896897352745306, 33.954553885620278 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Gazelle thomson',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/gazelle-m-600x600.png" alt="" width="200" height="200">',
+					'Nom scientifique': 'Gazelle dama',
+					Longueur: null,
+					Gestation: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896949683459092, 33.952909793044952 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Flamant rose',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Flamant-Rose-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Phoenicopterus roseus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894221152882348, 33.953258001835771 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Singe magot',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Singe-Magot-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895334270949593, 33.954872061753925 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'émeus',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/émeus.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894080343620834, 33.954566874881252 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Poule geante',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Poule_geante.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894001409414533, 33.954090740753976 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Paon',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Paon.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893802182784119, 33.954344053630699 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Poney',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Poney-600x600.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.892180842150753, 33.953593685424671 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Dromadaire',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/dromadaire.png" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893003137323289, 33.953380143303519 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Cygnes noirs',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Cygnes_noirs.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.892441686838461, 33.954048622043281 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Daim européen',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Daim.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.891922127517889, 33.954037422649229 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Chévre',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Chèvre-nain-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Capra hircus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.891875154690251, 33.953723830851921 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Perruche',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Perruche.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893210170756049, 33.953853300871415 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Mouton soay',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Mouton_soay.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893645170224637, 33.953800544963158 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Perroquet',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Perroquet.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Psittacus erithacus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89283858870969, 33.954206035568127 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Canards',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Canards.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.892465959279849, 33.953838192767634 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Bovin',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Bovin.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89273288382914, 33.953440459941362 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Mouflon à manchette',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Mouflons-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Ammotragus lervia'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894703286301524, 33.954549165019102 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Hippopotame',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Hippopotame-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Hippopotamus amphibius'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894583725553247, 33.952444024608432 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Crocodile',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Crocodile-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Crocodylus niloticus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894850536549303, 33.952299211653568 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Pélican',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Pélican.jpeg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895189490788648, 33.952349452445347 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Canards',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Canards.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89452753669388, 33.952802305454547 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Loutre',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Loutre.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894290391113994, 33.953006389476329 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Cygens',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Cygens.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894579413324924, 33.953536528137036 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Vrai Roux',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Vrai_Roux.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893889308919515, 33.953146080794632 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Chimpanzé',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Chimpanzé-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Pan troglodytes'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89416405214386, 33.951994680207243 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Cobe lechwé',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Cobe-lechwe-1-600x600.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894959829526456, 33.953206747742833 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Ibis chauve',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Ibis-Chauve-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Geronticus eremita'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893199987724175, 33.952423611766108 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Cerf',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Cerf.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893488723723625, 33.953466074619946 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Mandrill',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Mandrill.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Mandrillus sphinx'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896355934891602, 33.951601534186196 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Panthére',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Panthére.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89663548312604, 33.951504493580003 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Vautours',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Vautour-fauve-1-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Gyps fulvus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896632355848397, 33.952141361871469 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Fennec',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/fenenc-e1545643887672-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Vulpes zerda',
+					Classe: 'Mammifères',
+					Famille: 'Canidés',
+					Répartition: null,
+					Statut: 'Rare – Protégé'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896195072026975, 33.954183883971773 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Porc-épic',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Porc-épic.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896033211907156, 33.954224579955728 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Hyène rayée',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Hyène_rayée.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896669632192058, 33.952407277708915 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Oryx beisa',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Oryx-beisa-2-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Oryx beisa'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896543036997123, 33.954068098339157 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Lycaon',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Lycaon-2-600x600.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': 'Lycaon pictus'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895967711859759, 33.953086632798993 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Mangouste',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Mangouste.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896288584756079, 33.954357369907115 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Cigogne blanche',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Cigogne_blanche.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896641275527356, 33.953056106974309 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Autruche Africaine',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Autruche%20Africaine.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.897671704906049, 33.952983535304263 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Tortue sulcata',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Tortue_sulcata.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896253851995985, 33.952858264282 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Mangouste rayée',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Mangouste_rayée.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896544486980803, 33.95269121859058 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Renard',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Renard.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895161939038933, 33.954336946118879 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Genette',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Genette.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894826826519151, 33.954572341769627 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Buse',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Buse.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896769827357678, 33.952068268092546 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Rapaces',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Rapaces.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896946100661076, 33.951948582845873 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Ecureuil',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Ecureuil.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89642371161221, 33.952746998351842 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Gazelle dorcas',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Gazelle_dorcas.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896806944506035, 33.953913873975253 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Serval',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Serval.jpg" alt="" width="200" height="200">',
+					'Nom scientifique': null,
+					Classe: null,
+					Famille: null,
+					Longueur: null,
+					Régime: null,
+					Gestation: null,
+					Répartition: null,
+					Statut: null
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893228579934036, 33.95290939124753 ] }
+			}
 		]
-		};
+	};
 
-	var Biozones={
-		"type": "FeatureCollection",
-		"name": "Animals",
-		"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-		"features": [
-		{ "type": "Feature", "properties": { "Name": "Village des visiteurs", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.894429715544371, 33.95534487700624 ] } },
-		{ "type": "Feature", "properties": { "Name": "Ferme pédagogique", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Ferme_pédagogique.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.893680346436516, 33.954126087992279 ] } },
-		{ "type": "Feature", "properties": { "Name": "Montagnes de l'Atlas", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Montagnes_de_latlas.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895346687004776, 33.954683553496444 ] } },
-		{ "type": "Feature", "properties": { "Name": "Savane Africaine", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Savane.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.898204646828526, 33.952718798310848 ] } },
-		{ "type": "Feature", "properties": { "Name": "Marécages", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Logo-ZOO.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.895689542910474, 33.952486431220557 ] } },
-		{ "type": "Feature", "properties": { "Name": "Forèt Tropicale", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Foret_tropical.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.89414864494506, 33.952215009065668 ] } },
-		{ "type": "Feature", "properties": { "Name": "Désert", "img": "<img src=\"https:\/\/cdn.jsdelivr.net\/gh\/DrDoXi\/JZN_Animals@main\/Désert.jpg\" alt=\"\" width=\"200\" height=\"200\">" }, "geometry": { "type": "Point", "coordinates": [ -6.896253647281535, 33.954104701731211 ] } }
+	var Biozones = {
+		type: 'FeatureCollection',
+		name: 'Animals',
+		crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
+		features: [
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Village des visiteurs',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Logo-ZOO.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.894429715544371, 33.95534487700624 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Ferme pédagogique',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Ferme_pédagogique.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.893680346436516, 33.954126087992279 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: "Montagnes de l'Atlas",
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Montagnes_de_latlas.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895346687004776, 33.954683553496444 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Savane Africaine',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Savane.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.898204646828526, 33.952718798310848 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Marécages',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Logo-ZOO.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.895689542910474, 33.952486431220557 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Forèt Tropicale',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Foret_tropical.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.89414864494506, 33.952215009065668 ] }
+			},
+			{
+				type: 'Feature',
+				properties: {
+					Name: 'Désert',
+					img:
+						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Désert.jpg" alt="" width="200" height="200">'
+				},
+				geometry: { type: 'Point', coordinates: [ -6.896253647281535, 33.954104701731211 ] }
+			}
 		]
-		};
-			
-		grid = document.getElementsByClassName('auto-grid')[0];
+	};
 
-		title1=document.createElement("h2");
+	grid = document.getElementsByClassName('auto-grid')[0];
 
-		title1.innerText= 'Biozones'
-		grid.appendChild(title1)
+	title1 = document.createElement('h2');
 
-		for (let i = 0; i < Biozones.features.length; i++) {
-			new_li=document.createElement("li");
-			a=document.createElement("a");
-			a.className = "profile";
-			new_h2=document.createElement("h2");
-			new_h2.className = "profile__name";
-			new_h2.innerText= Biozones.features[i].properties.Name;
-			new_p=document.createElement("p");
-			new_p.innerHTML= '<br>';
-			a.appendChild(new_h2);
-			a.appendChild(new_p);
-			new_li.appendChild(a);
-			grid.appendChild(new_li);
-			a.insertAdjacentHTML("beforeEnd",Biozones.features[i].properties.img);
-			new_li.addEventListener("click", function() {
-				setSheetHeight(0);
-				setIsSheetShown(false);
-				map.flyTo({
-					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-					center: Biozones.features[i].geometry.coordinates,
-					zoom: 17.5,
-					pitch: 39.01,
-					bearing: -147.5,
-					duration: 5000
-				});
-				;
-			  });
-		} ;
+	title1.innerText = 'Biozones';
+	grid.appendChild(title1);
 
-		title2=document.createElement("h2");
-		title2.innerText= 'Animaux'
-		grid.appendChild(title2);
+	for (let i = 0; i < Biozones.features.length; i++) {
+		new_li = document.createElement('li');
+		a = document.createElement('a');
+		a.className = 'profile';
+		new_h2 = document.createElement('h2');
+		new_h2.className = 'profile__name';
+		new_h2.innerText = Biozones.features[i].properties.Name;
+		new_p = document.createElement('p');
+		new_p.innerHTML = '<br>';
+		a.appendChild(new_h2);
+		a.appendChild(new_p);
+		new_li.appendChild(a);
+		grid.appendChild(new_li);
+		a.insertAdjacentHTML('beforeEnd', Biozones.features[i].properties.img);
+		new_li.addEventListener('click', function() {
+			setSheetHeight(0);
+			setIsSheetShown(false);
+			map.flyTo({
+				essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+				center: Biozones.features[i].geometry.coordinates,
+				zoom: 17.5,
+				pitch: 39.01,
+				bearing: -147.5,
+				duration: 5000
+			});
+		});
+	}
 
-		for (let i = 0; i < animals.features.length; i++) {
-			
-			new_li=document.createElement("li");
-			a=document.createElement("a");
-			a.className = "profile";
-			new_h2=document.createElement("h2");
-			new_h2.className = "profile__name";
-			new_h2.innerText= animals.features[i].properties.Name;
-			new_p=document.createElement("p");
-			new_p.innerText= 'Savane';
-			a.appendChild(new_h2);
-			a.appendChild(new_p);
-			new_li.appendChild(a);
-			grid.appendChild(new_li);
-			a.insertAdjacentHTML("beforeEnd",animals.features[i].properties.img);
-			new_li.addEventListener("click", function() {
-				setSheetHeight(0);
-				setIsSheetShown(false);
-				map.flyTo({
-					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-			
-					center: animals.features[i].geometry.coordinates,
-					zoom: 19,
-					pitch: 39.01,
-					bearing: -147.5,
-					duration: 5000
-				});
-				;
-			  });
-		} 
-	
+	title2 = document.createElement('h2');
+	title2.innerText = 'Animaux';
+	grid.appendChild(title2);
+
+	for (let i = 0; i < animals.features.length; i++) {
+		new_li = document.createElement('li');
+		a = document.createElement('a');
+		a.className = 'profile';
+		new_h2 = document.createElement('h2');
+		new_h2.className = 'profile__name';
+		new_h2.innerText = animals.features[i].properties.Name;
+		new_p = document.createElement('p');
+		new_p.innerText = 'Savane';
+		a.appendChild(new_h2);
+		a.appendChild(new_p);
+		new_li.appendChild(a);
+		grid.appendChild(new_li);
+		a.insertAdjacentHTML('beforeEnd', animals.features[i].properties.img);
+		new_li.addEventListener('click', function() {
+			setSheetHeight(0);
+			setIsSheetShown(false);
+			map.flyTo({
+				essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+
+				center: animals.features[i].geometry.coordinates,
+				zoom: 19,
+				pitch: 39.01,
+				bearing: -147.5,
+				duration: 5000
+			});
+		});
+	}
+
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
-
