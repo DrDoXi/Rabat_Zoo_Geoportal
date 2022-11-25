@@ -739,7 +739,7 @@ document.getElementsByClassName('nav__item')[2].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML='';// 
+	document.getElementsByTagName('main')[0].innerHTML='<iframe src="About.html"  marginwidth="50" ></iframe>';// 
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });

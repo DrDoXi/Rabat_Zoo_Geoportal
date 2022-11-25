@@ -134,8 +134,9 @@ body {
 }
 
 #sheet .contents.fullscreen {
-  border-radius: 0;
+  border-radius: 20px;
 }
+
 
 #sheet[aria-hidden="true"] .contents {
   transform: translateY(100%);
@@ -161,10 +162,10 @@ body {
 
 #sheet .close-sheet {
   position: absolute;
-  right: 0;
-  top: 0;
+  left: 10px;
+  top: 10px;
   border: none;
-  opacity: 0;
+  opacity: 1;
 }
 
 #sheet .body {
