@@ -134,7 +134,7 @@ body {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
 }
 
-.wrapper .VillVisi:hover,
+/* .wrapper .VillVisi:hover,
 .wrapper .VillVisi:hover .tooltip,
 .wrapper .VillVisi:hover .tooltip::before {
   background: #1877f2;
@@ -181,7 +181,7 @@ body {
 .wrapper .frotro:hover .tooltip::before {
   background: #11971a;
   color: #ffffff;
-}
+} */
 
 
 main h1 {
@@ -353,4 +353,31 @@ main .profile:focus img {
   margin: 0.6rem 0 0.25rem 0;
   font: "Open Sans", sans-serif;
   color: #38837b;
+}
+
+.close {
+  position: absolute;
+  left: 7px;
+  top: 16px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 12px;
+  width: 2px;
+  background-color: #38837b;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }
