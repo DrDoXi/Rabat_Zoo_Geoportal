@@ -13,7 +13,7 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	antialias: true,
 	attributionControl: false,
-	minZoom: 14,
+	// minZoom: 14,
 	maxZoom: 20
 });
 
@@ -104,7 +104,8 @@ async function getRoute(end) {
 	// an arbitrary start will always be the same
 	// only the end or destination will change
 	const query = await fetch(
-		`https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+		`https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`,
+		// `http://router.project-osrm.org/route/v1/foot/${start[0]},${start[1]};${end[0]},${end[1]}?&geometries=geojson&overview=false`,
 		{ method: 'GET' }
 	);
 	const json = await query.json();
@@ -354,11 +355,27 @@ map.on('load', () => {
 		closeOnMove: true
 	});
 
+	map.addSource('Distrubition', {
+		type: 'geojson',
+		data: './data/Distrubition.geojson'
+	});
+
+	map.addLayer({
+		id: 'Distrubition',
+		type: 'fill',
+		source: 'Distrubition',
+		layout: {},
+		paint: {
+			'fill-color': '#ebba5a',
+			'fill-opacity': 0
+		}
+	});
+
 	map.on('mouseenter', 'Animals', (e) => {
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		const img = e.features[0].properties.img;
 		const Animal_name = e.features[0].properties.Name;
-
+	
 		html_in_popup =
 			'<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem;">' +
 			Animal_name +
@@ -488,6 +505,33 @@ map.on('load', () => {
 			'<br>' +
 			e.features[0].properties.Répartition;
 		content.appendChild(new_p);
+
+
+		if (e.features[0].properties.Name=='Giraphe') {
+
+			var new_btn = document.createElement('button');
+			new_btn.type="button";
+			new_btn.innerHTML='show répartion';
+			new_btn.addEventListener('click', () => {
+				setSheetHeight(0);
+				setIsSheetShown(false);
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ 30, 0 ],
+					zoom: 1,
+					pitch: 0,
+					bearing: 0,
+					duration: 15000
+				});
+				map.setPaintProperty(
+					'Distrubition',
+					'fill-opacity',
+					0.9
+					);
+
+			});
+			content.appendChild(new_btn);
+		}
 
 		var new_p = document.createElement('p');
 		new_p.innerHTML =
