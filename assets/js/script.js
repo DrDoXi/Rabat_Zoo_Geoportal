@@ -1,7 +1,7 @@
 // Adding mapbox basemap
-// mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
-mapboxgl.accessToken =
-	'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
+// mapboxgl.accessToken =
+// 	'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
 // pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ
 // Creating a map object
 const map = new mapboxgl.Map({
@@ -371,6 +371,36 @@ map.on('load', () => {
 		}
 	});
 
+	map.addSource('lions', {
+		'type': 'raster',
+		'url': 'mapbox://drissdrdoxi.6b7cclpm'
+		});
+
+	map.addSource('girafes', {
+		'type': 'raster',
+		'url': 'mapbox://drissdrdoxi.6zy27vg5'
+		});
+
+	map.addLayer({
+			'id': 'lions',
+			'source': 'lions',
+			'type': 'raster',
+			paint:{
+				'raster-opacity':0
+			}
+			});
+
+	map.addLayer({
+			'id': 'girafes',
+			'source': 'girafes',
+			'type': 'raster',
+			paint:{
+				'raster-opacity':0
+			}
+			});
+
+	
+
 	map.on('mouseenter', 'Animals', (e) => {
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		const img = e.features[0].properties.img;
@@ -511,7 +541,7 @@ map.on('load', () => {
 
 			var new_btn = document.createElement('button');
 			new_btn.type="button";
-			new_btn.innerHTML='show répartion';
+			new_btn.innerHTML='Afficher sur la carte';
 			new_btn.addEventListener('click', () => {
 				setSheetHeight(0);
 				setIsSheetShown(false);
@@ -524,14 +554,41 @@ map.on('load', () => {
 					duration: 15000
 				});
 				map.setPaintProperty(
-					'Distrubition',
-					'fill-opacity',
-					0.9
+					'girafes',
+					'raster-opacity',
+					1
+				);
+
+			});
+			content.appendChild(new_btn);
+		}
+
+		if (e.features[0].properties.Name=='Lion de latlas') {
+
+			var new_btn = document.createElement('button');
+			new_btn.type="button";
+			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.addEventListener('click', () => {
+				setSheetHeight(0);
+				setIsSheetShown(false);
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ 30, 0 ],
+					zoom: 1,
+					pitch: 0,
+					bearing: 0,
+					duration: 15000
+				});
+				map.setPaintProperty(
+					'lions',
+					'raster-opacity',
+					1
 					);
 
 			});
 			content.appendChild(new_btn);
 		}
+
 
 		var new_p = document.createElement('p');
 		new_p.innerHTML =
@@ -751,6 +808,58 @@ map.on('load', () => {
 			e.features[0].properties.Répartition;
 		content.appendChild(new_p);
 
+		if (e.features[0].properties.Name=='Giraphe') {
+
+			var new_btn = document.createElement('button');
+			new_btn.type="button";
+			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.addEventListener('click', () => {
+				setSheetHeight(0);
+				setIsSheetShown(false);
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ 30, 0 ],
+					zoom: 1,
+					pitch: 0,
+					bearing: 0,
+					duration: 15000
+				});
+				map.setPaintProperty(
+					'girafes',
+					'raster-opacity',
+					1
+				);
+
+			});
+			content.appendChild(new_btn);
+		}
+
+		if (e.features[0].properties.Name=='Lion de latlas') {
+
+			var new_btn = document.createElement('button');
+			new_btn.type="button";
+			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.addEventListener('click', () => {
+				setSheetHeight(0);
+				setIsSheetShown(false);
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ 30, 0 ],
+					zoom: 1,
+					pitch: 0,
+					bearing: 0,
+					duration: 15000
+				});
+				map.setPaintProperty(
+					'lions',
+					'raster-opacity',
+					1
+					);
+
+			});
+			content.appendChild(new_btn);
+		}
+
 		var new_p = document.createElement('p');
 		new_p.innerHTML =
 			'<strong style=' +
@@ -901,8 +1010,34 @@ document.getElementsByClassName('nav__item')[1].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[2].addEventListener('click', () => {
+
 	setSheetHeight(0);
 	setIsSheetShown(false);
+
+	if (map.getZoom()<15) {
+		map.flyTo({
+			essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+			center: [ -6.8932888, 33.954826 ],
+			zoom: 16,
+			pitch: 40,
+			bearing: 220,
+			duration: 5000
+		});
+	  }
+
+	map.setPaintProperty(
+		'lions',
+		'raster-opacity',
+		0
+		);
+
+	map.setPaintProperty(
+			'girafes',
+			'raster-opacity',
+			0
+		);
+	
+	
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
