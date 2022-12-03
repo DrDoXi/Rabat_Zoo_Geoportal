@@ -196,7 +196,7 @@ map.addControl(
 		accessToken: mapboxgl.accessToken,
 		localGeocoder: forwardGeocoder,
 		zoom: 19,
-		placeholder: 'Enter search e.g. Giraffe',
+		placeholder: 'Un animal ex. Girafe',
 		mapboxgl: mapboxgl,
 		limit: 5,
 		marker: false
@@ -425,10 +425,10 @@ map.on('load', () => {
 			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">' +
 			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class=' +
 			"'bx bx-info-circle nav__icon'" +
-			'></i><span class="nav__name">Details</span></a></li>' +
+			'></i><span class="nav__name">Détails</span></a></li>' +
 			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class=' +
 			"'bx bx-navigation nav__icon'" +
-			'></i><span class="nav__name">Drirection</span></a></li>' +
+			'></i><span class="nav__name">Itinéraire</span></a></li>' +
 			'</ul></div></nav>';
 
 		// '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
