@@ -42,8 +42,10 @@ modelTransform.scale = 0.2017080146240745e-8;
 
 const THREE = window.THREE;
 
+
 // configuration of the custom layer for a 3D model per the CustomLayerInterface
 const customLayer = {
+	
 	id: '3d-model',
 	type: 'custom',
 	renderingMode: '3d',
