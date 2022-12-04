@@ -42,8 +42,10 @@ modelTransform.scale = 0.2017080146240745e-8;
 
 const THREE = window.THREE;
 
+
 // configuration of the custom layer for a 3D model per the CustomLayerInterface
 const customLayer = {
+	
 	id: '3d-model',
 	type: 'custom',
 	renderingMode: '3d',
@@ -100,11 +102,11 @@ const start = [ -6.894425, 33.955313 ];
 
 // create a function to make a directions request
 async function getRoute(end) {
-	// make a directions request using cycling profile
+	// make a directions request using walking profile
 	// an arbitrary start will always be the same
 	// only the end or destination will change
 	const query = await fetch(
-		`https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`,
+		`https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&language=Fr&geometries=geojson&access_token=${mapboxgl.accessToken}`,
 		// `http://router.project-osrm.org/route/v1/foot/${start[0]},${start[1]};${end[0]},${end[1]}?&geometries=geojson&overview=false`,
 		{ method: 'GET' }
 	);
@@ -145,6 +147,17 @@ async function getRoute(end) {
 		});
 	}
 	// add turn instructions here at the end
+
+	// const instructions = document.getElementById('instructions');
+	const instructions=document.getElementsByTagName('main')[0]
+
+	const steps = data.legs[0].steps;
+	let tripInstructions = '';
+	for (const step of steps) {
+		tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+	  }
+	instructions.innerHTML = `<p><strong>Temps de marche estimé: ${Math.floor(
+		data.duration / 60)} min 🚶 <br> <p><strong>Distance: ${data.distance} metre 🚶</strong></p><ol>${tripInstructions}</ol><br><br><br>`;
 }
 
 // map.addControl(new mapboxgl.FullscreenControl());
@@ -185,7 +198,7 @@ map.addControl(
 		accessToken: mapboxgl.accessToken,
 		localGeocoder: forwardGeocoder,
 		zoom: 19,
-		placeholder: 'Enter search e.g. Giraffe',
+		placeholder: 'Un animal ex. Girafe',
 		mapboxgl: mapboxgl,
 		limit: 5,
 		marker: false
@@ -414,10 +427,10 @@ map.on('load', () => {
 			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">' +
 			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class=' +
 			"'bx bx-info-circle nav__icon'" +
-			'></i><span class="nav__name">Details</span></a></li>' +
+			'></i><span class="nav__name">Détails</span></a></li>' +
 			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class=' +
 			"'bx bx-navigation nav__icon'" +
-			'></i><span class="nav__name">Drirection</span></a></li>' +
+			'></i><span class="nav__name">Itinéraire</span></a></li>' +
 			'</ul></div></nav>';
 
 		// '<button type="button" id="open-sheet" aria-controls="sheet">Show Details</button>' +
@@ -668,6 +681,8 @@ map.on('load', () => {
 					bearing: 220,
 					duration: 5000
 				});
+				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setIsSheetShown(true);
 			});
 		} catch (err) {}
 	});
@@ -929,6 +944,18 @@ map.on('load', () => {
 					});
 				}
 				getRoute(coords);
+				popup.remove();
+				map.flyTo({
+					essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+					center: [ -6.8932888, 33.954826 ],
+					zoom: 16,
+					pitch: 40,
+					bearing: 220,
+					duration: 5000
+				});
+				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
+				setIsSheetShown(true);
+
 			});
 		} catch (err) {}
 	});
