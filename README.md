@@ -1,6 +1,7 @@
 # Rabat_Zoo_Geoportal
 
-Title: JZN Connect
+Title: 
+- JZN Connect
 
 Description:
 - This project is a web application that features an interactive map of the National Zoo of Rabat's animal collection. The platform highlights the diverse animal kingdom of the zoo, from awe-inspiring Atlas Lions to playful monkeys, and provides visitors with detailed information on each animal. The goal of this project is to improve the overall visitor experience and make the zoo more accessible to everyone.
