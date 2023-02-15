@@ -215,9 +215,9 @@ map.on('load', () => {
 			'Oryx algazelle',
 			'Eléphant',
 			'Rhinocéros',
-			'Giraphe',
+			'Girafe',
 			'Zébre',
-			'Lion de latlas',
+			"Lion Atlas",
 			'Hippopotame',
 			'Hyène rayée',
 			'Vautours',
@@ -550,7 +550,7 @@ map.on('load', () => {
 		content.appendChild(new_p);
 
 
-		if (e.features[0].properties.Name=='Giraphe') {
+		if (e.features[0].properties.Name=='Girafe') {
 
 			var new_btn = document.createElement('button');
 			new_btn.type="button";
@@ -576,7 +576,7 @@ map.on('load', () => {
 			content.appendChild(new_btn);
 		}
 
-		if (e.features[0].properties.Name=='Lion de latlas') {
+		if (e.features[0].properties.Name=="Lion Atlas") {
 
 			var new_btn = document.createElement('button');
 			new_btn.type="button";
@@ -823,7 +823,7 @@ map.on('load', () => {
 			e.features[0].properties.Répartition;
 		content.appendChild(new_p);
 
-		if (e.features[0].properties.Name=='Giraphe') {
+		if (e.features[0].properties.Name=='Girafe') {
 
 			var new_btn = document.createElement('button');
 			new_btn.type="button";
@@ -849,7 +849,7 @@ map.on('load', () => {
 			content.appendChild(new_btn);
 		}
 
-		if (e.features[0].properties.Name=='Lion de latlas') {
+		if (e.features[0].properties.Name=="Lion Atlas") {
 
 			var new_btn = document.createElement('button');
 			new_btn.type="button";
@@ -1094,7 +1094,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			{
 				type: 'Feature',
 				properties: {
-					Name: 'Giraphe',
+					Name: 'Girafe',
 					img:
 						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/Girafe.jpg" alt="" width="200" height="200">',
 					'Nom scientifique': 'Giraffa camelopardalis',
@@ -1110,7 +1110,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			{
 				type: 'Feature',
 				properties: {
-					Name: 'Lion de latlas',
+					Name: "Lion Atlas",
 					img:
 						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/DSC_1061-600x600.jpg" alt="Lion de l\'Atlas" width="200" height="200">',
 					'Nom scientifique': 'Panthera leo leo'
