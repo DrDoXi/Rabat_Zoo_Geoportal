@@ -15,6 +15,8 @@ Features:
   - Direction based on GPS to help visitors navigate the zoo
   - Online ticket purchase so visitors can buy their tickets directly from the web application
   - Valuable asset for presenting the collection more efficiently and providing visitors with useful information.
+  - Add georeferenced images to an interactive map
+
 
 Collaborators:
 - This project was created in collaboration with Mohamdi Maoulainine, as part of our topographical engineering training.
