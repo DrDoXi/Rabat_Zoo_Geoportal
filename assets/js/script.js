@@ -701,10 +701,10 @@ map.on('load', () => {
 			'<nav class="nav container"><div class="nav__menu" id="nav-menu"><ul class="nav__list">' +
 			'<li id="open-sheett" class="nav__item"><a href="#home" class="nav__link "><i class=' +
 			"'bx bx-info-circle nav__icon'" +
-			'></i><span class="nav__name">Details</span></a></li>' +
+			'></i><span class="nav__name">Détails</span></a></li>' +
 			'<li id="Direction_btnn" class="nav__item"><a href="#about" class="nav__link"><i class=' +
 			"'bx bx-navigation nav__icon'" +
-			'></i><span class="nav__name">Drirection</span></a></li>' +
+			'></i><span class="nav__name">Itinéraire</span></a></li>' +
 			'</ul></div></nav>';
 
 		// Ensure that if the map is zoomed out such that multiple
@@ -1068,7 +1068,7 @@ document.getElementsByClassName('nav__item')[2].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="About.html"  marginwidth="50" ></iframe>'; //
+	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="https://drdoxi.github.io/About_JZN/"  marginwidth="50" ></iframe>'; //
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
