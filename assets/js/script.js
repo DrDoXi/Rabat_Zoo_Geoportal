@@ -992,7 +992,7 @@ map.on('style.load', () => {
 });
 
 document.getElementsByClassName('nav__item')[0].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML = '';
+	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="landing_page.html" ></iframe>';
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
