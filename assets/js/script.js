@@ -1,8 +1,5 @@
 // Adding mapbox basemap
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJpc3NkcmRveGkiLCJhIjoiY2xhbGVudjByMDFpeTN2a2R1N3o4ejFieCJ9.fScK3YiEEJcw0Dyuoscnew';
-// mapboxgl.accessToken =
-// 	'pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ';
-// pk.eyJ1Ijoic2FsYWhlbGZhcmlzc2kiLCJhIjoiY2ttb3p1Yzk3Mjl2bzJ2bno3OGlqcjJ2bCJ9.pErPZNgS_t5jzHlsp_XyRQ
 // Creating a map object
 const map = new mapboxgl.Map({
 	style: 'mapbox://styles/drissdrdoxi/cl8owuj4b001q14ph74dfszi9',
@@ -42,10 +39,8 @@ modelTransform.scale = 0.2017080146240745e-8;
 
 const THREE = window.THREE;
 
-
 // configuration of the custom layer for a 3D model per the CustomLayerInterface
 const customLayer = {
-	
 	id: '3d-model',
 	type: 'custom',
 	renderingMode: '3d',
@@ -149,15 +144,16 @@ async function getRoute(end) {
 	// add turn instructions here at the end
 
 	// const instructions = document.getElementById('instructions');
-	const instructions=document.getElementsByTagName('main')[0]
+	const instructions = document.getElementsByTagName('main')[0];
 
 	const steps = data.legs[0].steps;
 	let tripInstructions = '';
 	for (const step of steps) {
 		tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-	  }
+	}
 	instructions.innerHTML = `<p><strong>Temps de marche estimé: ${Math.floor(
-		data.duration / 60)} min 🚶 <br> <p><strong>Distance: ${data.distance} metre 🚶</strong></p><ol>${tripInstructions}</ol><br><br><br>`;
+		data.duration / 60
+	)} min 🚶 <br> <p><strong>Distance: ${data.distance} metre 🚶</strong></p><ol>${tripInstructions}</ol><br><br><br>`;
 }
 
 // map.addControl(new mapboxgl.FullscreenControl());
@@ -217,7 +213,7 @@ map.on('load', () => {
 			'Rhinocéros',
 			'Girafe',
 			'Zébre',
-			"Lion Atlas",
+			'Lion Atlas',
 			'Hippopotame',
 			'Hyène rayée',
 			'Vautours',
@@ -385,40 +381,38 @@ map.on('load', () => {
 	});
 
 	map.addSource('lions', {
-		'type': 'raster',
-		'url': 'mapbox://drissdrdoxi.6b7cclpm'
-		});
+		type: 'raster',
+		url: 'mapbox://drissdrdoxi.6b7cclpm'
+	});
 
 	map.addSource('girafes', {
-		'type': 'raster',
-		'url': 'mapbox://drissdrdoxi.6zy27vg5'
-		});
+		type: 'raster',
+		url: 'mapbox://drissdrdoxi.6zy27vg5'
+	});
 
 	map.addLayer({
-			'id': 'lions',
-			'source': 'lions',
-			'type': 'raster',
-			paint:{
-				'raster-opacity':0
-			}
-			});
+		id: 'lions',
+		source: 'lions',
+		type: 'raster',
+		paint: {
+			'raster-opacity': 0
+		}
+	});
 
 	map.addLayer({
-			'id': 'girafes',
-			'source': 'girafes',
-			'type': 'raster',
-			paint:{
-				'raster-opacity':0
-			}
-			});
-
-	
+		id: 'girafes',
+		source: 'girafes',
+		type: 'raster',
+		paint: {
+			'raster-opacity': 0
+		}
+	});
 
 	map.on('mouseenter', 'Animals', (e) => {
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		const img = e.features[0].properties.img;
 		const Animal_name = e.features[0].properties.Name;
-	
+
 		html_in_popup =
 			'<h2 style="font-family: "Open Sans", sans-serif; font-size: 1.2rem;">' +
 			Animal_name +
@@ -549,12 +543,10 @@ map.on('load', () => {
 			e.features[0].properties.Répartition;
 		content.appendChild(new_p);
 
-
-		if (e.features[0].properties.Name=='Girafe') {
-
+		if (e.features[0].properties.Name == 'Girafe') {
 			var new_btn = document.createElement('button');
-			new_btn.type="button";
-			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.type = 'button';
+			new_btn.innerHTML = 'Afficher sur la carte';
 			new_btn.addEventListener('click', () => {
 				setSheetHeight(0);
 				setIsSheetShown(false);
@@ -566,21 +558,15 @@ map.on('load', () => {
 					bearing: 0,
 					duration: 15000
 				});
-				map.setPaintProperty(
-					'girafes',
-					'raster-opacity',
-					1
-				);
-
+				map.setPaintProperty('girafes', 'raster-opacity', 1);
 			});
 			content.appendChild(new_btn);
 		}
 
-		if (e.features[0].properties.Name=="Lion Atlas") {
-
+		if (e.features[0].properties.Name == 'Lion Atlas') {
 			var new_btn = document.createElement('button');
-			new_btn.type="button";
-			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.type = 'button';
+			new_btn.innerHTML = 'Afficher sur la carte';
 			new_btn.addEventListener('click', () => {
 				setSheetHeight(0);
 				setIsSheetShown(false);
@@ -592,16 +578,10 @@ map.on('load', () => {
 					bearing: 0,
 					duration: 15000
 				});
-				map.setPaintProperty(
-					'lions',
-					'raster-opacity',
-					1
-					);
-
+				map.setPaintProperty('lions', 'raster-opacity', 1);
 			});
 			content.appendChild(new_btn);
 		}
-
 
 		var new_p = document.createElement('p');
 		new_p.innerHTML =
@@ -823,11 +803,10 @@ map.on('load', () => {
 			e.features[0].properties.Répartition;
 		content.appendChild(new_p);
 
-		if (e.features[0].properties.Name=='Girafe') {
-
+		if (e.features[0].properties.Name == 'Girafe') {
 			var new_btn = document.createElement('button');
-			new_btn.type="button";
-			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.type = 'button';
+			new_btn.innerHTML = 'Afficher sur la carte';
 			new_btn.addEventListener('click', () => {
 				setSheetHeight(0);
 				setIsSheetShown(false);
@@ -839,21 +818,15 @@ map.on('load', () => {
 					bearing: 0,
 					duration: 15000
 				});
-				map.setPaintProperty(
-					'girafes',
-					'raster-opacity',
-					1
-				);
-
+				map.setPaintProperty('girafes', 'raster-opacity', 1);
 			});
 			content.appendChild(new_btn);
 		}
 
-		if (e.features[0].properties.Name=="Lion Atlas") {
-
+		if (e.features[0].properties.Name == 'Lion Atlas') {
 			var new_btn = document.createElement('button');
-			new_btn.type="button";
-			new_btn.innerHTML='Afficher sur la carte';
+			new_btn.type = 'button';
+			new_btn.innerHTML = 'Afficher sur la carte';
 			new_btn.addEventListener('click', () => {
 				setSheetHeight(0);
 				setIsSheetShown(false);
@@ -865,12 +838,7 @@ map.on('load', () => {
 					bearing: 0,
 					duration: 15000
 				});
-				map.setPaintProperty(
-					'lions',
-					'raster-opacity',
-					1
-					);
-
+				map.setPaintProperty('lions', 'raster-opacity', 1);
 			});
 			content.appendChild(new_btn);
 		}
@@ -955,7 +923,6 @@ map.on('load', () => {
 				});
 				setSheetHeight(Math.min(50, 720 / window.innerHeight * 100));
 				setIsSheetShown(true);
-
 			});
 		} catch (err) {}
 	});
@@ -1037,11 +1004,10 @@ document.getElementsByClassName('nav__item')[1].addEventListener('click', () => 
 });
 
 document.getElementsByClassName('nav__item')[2].addEventListener('click', () => {
-
 	setSheetHeight(0);
 	setIsSheetShown(false);
 
-	if (map.getZoom()<15) {
+	if (map.getZoom() < 15) {
 		map.flyTo({
 			essential: true, // this animation is considered essential with respect to prefers-reduced-motion
 			center: [ -6.8932888, 33.954826 ],
@@ -1050,25 +1016,16 @@ document.getElementsByClassName('nav__item')[2].addEventListener('click', () => 
 			bearing: 220,
 			duration: 5000
 		});
-	  }
+	}
 
-	map.setPaintProperty(
-		'lions',
-		'raster-opacity',
-		0
-		);
+	map.setPaintProperty('lions', 'raster-opacity', 0);
 
-	map.setPaintProperty(
-			'girafes',
-			'raster-opacity',
-			0
-		);
-	
-	
+	map.setPaintProperty('girafes', 'raster-opacity', 0);
 });
 
 document.getElementsByClassName('nav__item')[4].addEventListener('click', () => {
-	document.getElementsByTagName('main')[0].innerHTML = '<iframe src="https://drdoxi.github.io/About_JZN/"  marginwidth="50" ></iframe>'; //
+	document.getElementsByTagName('main')[0].innerHTML =
+		'<iframe src="https://drdoxi.github.io/About_JZN/"  marginwidth="50" ></iframe>'; //
 	setSheetHeight(window.innerHeight);
 	setIsSheetShown(true);
 });
@@ -1110,7 +1067,7 @@ document.getElementsByClassName('nav__item')[3].addEventListener('click', () => 
 			{
 				type: 'Feature',
 				properties: {
-					Name: "Lion Atlas",
+					Name: 'Lion Atlas',
 					img:
 						'<img src="https://cdn.jsdelivr.net/gh/DrDoXi/JZN_Animals@main/DSC_1061-600x600.jpg" alt="Lion de l\'Atlas" width="200" height="200">',
 					'Nom scientifique': 'Panthera leo leo'
